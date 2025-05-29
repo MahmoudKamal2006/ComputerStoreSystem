@@ -1,0 +1,37 @@
+// Apply the application and JavaFX plugins
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.14'
+}
+
+// Project coordinates (adjust as you like)
+group = 'com.mahmoud'
+version = '1.0.0'
+
+// Where to fetch dependencies from
+repositories {
+    mavenCentral()
+}
+
+// Java compilation settings
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+// JavaFX plugin configuration
+javafx {
+    version = '20'                              // Match to your JavaFX SDK version
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+// Application plugin configuration
+application {
+    // Fully qualified name of your Main class
+    mainClass = 'com.mahmoud.computerstore.Main'
+}
+
+// (Optional) Add any other libraries here, for example:
+// dependencies {
+//     implementation 'org.apache.commons:commons-csv:1.10.0'
+// }
