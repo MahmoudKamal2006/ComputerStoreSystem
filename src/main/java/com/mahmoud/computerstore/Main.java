@@ -16,56 +16,80 @@ public class Main {
             System.out.println(i + ": " + cpus.get(i).getModel() + " (" + cpus.get(i).getSocket() + ")");
         }
 
-        // Select the first CPU
+        if (cpus.isEmpty()) {
+            System.out.println("❗ No CPUs found in inventory.");
+            return;
+        }
+
+        // Select first CPU
         CPU selectedCpu = cpus.get(0);
         builder.selectCPU(selectedCpu);
         System.out.println("\nSelected CPU: " + selectedCpu.getModel());
 
-        // 2. Show compatible motherboards
+        // 2. Compatible motherboards
         System.out.println("\nCompatible Motherboards:");
         List<Motherboard> motherboards = builder.getCompatibleMotherboards();
+        if (motherboards.isEmpty()) {
+            System.out.println("❗ No compatible motherboards found.");
+            return;
+        }
         for (Motherboard mb : motherboards) {
             System.out.println("- " + mb.getModel() + " (" + mb.getSocket() + ")");
         }
+        builder.selectMotherboard(motherboards.get(0));
 
-        if (!motherboards.isEmpty()) {
-            builder.selectMotherboard(motherboards.get(0));
+        // 3. Compatible cooling
+        System.out.println("\nCompatible Cooling:");
+        List<Cooling> coolers = builder.getCompatibleCooling();
+        if (coolers.isEmpty()) {
+            System.out.println("❗ No compatible cooling found.");
+        } else {
+            for (Cooling cooler : coolers) {
+                System.out.println("- " + cooler.getModel());
+            }
+            builder.selectCooling(coolers.get(0));
         }
 
-        // 3. Show compatible RAM
+        // 4. Compatible RAM
         System.out.println("\nCompatible RAM:");
         List<RAM> rams = builder.getCompatibleRAM();
+        if (rams.isEmpty()) {
+            System.out.println("❗ No compatible RAM found.");
+            return;
+        }
         for (RAM ram : rams) {
             System.out.println("- " + ram.getModel() + " (" + ram.getType() + ")");
         }
+        builder.selectRAM(rams.get(0));
 
-        if (!rams.isEmpty()) {
-            builder.selectRAM(rams.get(0));
+        // 5. Storage
+        List<Storage> storageList = builder.getAvailableStorage();
+        if (!storageList.isEmpty()) {
+            builder.selectStorage(storageList.get(0));
         }
 
-        // 4. Add GPU, Storage, Cooler, Case, PSU (pick the first available)
-        if (!builder.getAvailableGPUs().isEmpty()) {
-            builder.selectGPU(builder.getAvailableGPUs().get(0));
+        // 6. GPU
+        List<GPU> gpus = builder.getAvailableGPUs();
+        if (!gpus.isEmpty()) {
+            builder.selectGPU(gpus.get(0));
         }
 
-        if (!builder.getAvailableStorage().isEmpty()) {
-            builder.selectStorage(builder.getAvailableStorage().get(0));
+        // 7. Case
+        List<Case> cases = builder.getAvailableCases();
+        if (!cases.isEmpty()) {
+            builder.selectCase(cases.get(0));
         }
 
-        if (!builder.getCompatibleCooling().isEmpty()) {
-            builder.selectCooling(builder.getCompatibleCooling().get(0));
+        // 8. Compatible PSU
+        List<PSU> psus = builder.getCompatiblePSUs();
+        if (psus.isEmpty()) {
+            System.out.println("❗ No compatible PSUs found.");
+        } else {
+            builder.selectPSU(psus.get(0));
         }
 
-        if (!builder.getAvailableCases().isEmpty()) {
-            builder.selectCase(builder.getAvailableCases().get(0));
-        }
-
-        if (!builder.getCompatiblePSUs().isEmpty()) {
-            builder.selectPSU(builder.getCompatiblePSUs().get(0));
-        }
-
-        // 5. Print final build summary
-        System.out.println("\n✅ Final PC Build:");
+        // Final build summary
+        System.out.println("\n✅ Final PC Build Summary:");
         System.out.println(builder.getCurrentBuild());
     }
 }
