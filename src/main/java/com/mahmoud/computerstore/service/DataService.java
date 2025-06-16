@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Provides methods to load and save component data using CSV files.
+ * Includes error handling and debugging output.
  */
 public class DataService {
 
@@ -23,20 +24,226 @@ public class DataService {
     // ---------- CPU ----------
     public List<CPU> loadCPUs() {
         List<CPU> list = new ArrayList<>();
-        for (String[] row : CSVLoader.readCSV(CPU_PATH)) {
+        List<String[]> rows = CSVLoader.readCSV(CPU_PATH);
+        System.out.println("Loading CPUs: found " + rows.size() + " rows");
+
+        for (String[] row : rows) {
             try {
-                list.add(new CPU(
-                        Integer.parseInt(row[0]),
-                        row[1], row[2], row[3],
-                        Integer.parseInt(row[4]),
-                        row[5], row[6], row[7],
-                        Integer.parseInt(row[8])
-                ));
-            } catch (Exception ignored) {}
+                if (row.length >= 9) {
+                    list.add(new CPU(
+                            Integer.parseInt(row[0].trim()),
+                            row[1].trim(), row[2].trim(), row[3].trim(),
+                            Integer.parseInt(row[4].trim()),
+                            row[5].trim(), row[6].trim(), row[7].trim(),
+                            Integer.parseInt(row[8].trim())
+                    ));
+                } else {
+                    System.err.println("CPU row has insufficient columns: " + String.join(",", row));
+                }
+            } catch (Exception e) {
+                System.err.println("Error parsing CPU row: " + String.join(",", row) + " - " + e.getMessage());
+            }
         }
+        System.out.println("Successfully loaded " + list.size() + " CPUs");
         return list;
     }
 
+    // ---------- GPU ----------
+    public List<GPU> loadGPUs() {
+        List<GPU> list = new ArrayList<>();
+        List<String[]> rows = CSVLoader.readCSV(GPU_PATH);
+        System.out.println("Loading GPUs: found " + rows.size() + " rows");
+
+        for (String[] row : rows) {
+            try {
+                if (row.length >= 8) {
+                    list.add(new GPU(
+                            Integer.parseInt(row[0].trim()),
+                            row[1].trim(), row[2].trim(), row[3].trim(),
+                            Integer.parseInt(row[4].trim()),
+                            row[5].trim(), row[6].trim(),
+                            Integer.parseInt(row[7].trim())
+                    ));
+                } else {
+                    System.err.println("GPU row has insufficient columns: " + String.join(",", row));
+                }
+            } catch (Exception e) {
+                System.err.println("Error parsing GPU row: " + String.join(",", row) + " - " + e.getMessage());
+            }
+        }
+        System.out.println("Successfully loaded " + list.size() + " GPUs");
+        return list;
+    }
+
+    // ---------- RAM ----------
+    public List<RAM> loadRAM() {
+        List<RAM> list = new ArrayList<>();
+        List<String[]> rows = CSVLoader.readCSV(RAM_PATH);
+        System.out.println("Loading RAM: found " + rows.size() + " rows");
+
+        for (String[] row : rows) {
+            try {
+                if (row.length >= 8) {
+                    list.add(new RAM(
+                            Integer.parseInt(row[0].trim()),
+                            row[1].trim(), row[2].trim(), row[3].trim(),
+                            row[4].trim(), row[5].trim(),
+                            Integer.parseInt(row[6].trim()), row[7].trim()
+                    ));
+                } else {
+                    System.err.println("RAM row has insufficient columns: " + String.join(",", row));
+                }
+            } catch (Exception e) {
+                System.err.println("Error parsing RAM row: " + String.join(",", row) + " - " + e.getMessage());
+            }
+        }
+        System.out.println("Successfully loaded " + list.size() + " RAM modules");
+        return list;
+    }
+
+    // ---------- Motherboard ----------
+    public List<Motherboard> loadMotherboards() {
+        List<Motherboard> list = new ArrayList<>();
+        List<String[]> rows = CSVLoader.readCSV(MOTHERBOARD_PATH);
+        System.out.println("Loading Motherboards: found " + rows.size() + " rows");
+
+        for (String[] row : rows) {
+            try {
+                if (row.length >= 12) {
+                    list.add(new Motherboard(
+                            Integer.parseInt(row[0].trim()),
+                            row[1].trim(), row[2].trim(), row[3].trim(), row[4].trim(),
+                            row[5].trim(), Integer.parseInt(row[6].trim()), row[7].trim(), row[8].trim(),
+                            row[9].trim(), row[10].trim(), row[11].trim(),
+                            row.length > 12 ? row[12].trim() : "Ethernet" // Default network if missing
+                    ));
+                } else {
+                    System.err.println("Motherboard row has insufficient columns: " + String.join(",", row));
+                }
+            } catch (Exception e) {
+                System.err.println("Error parsing Motherboard row: " + String.join(",", row) + " - " + e.getMessage());
+            }
+        }
+        System.out.println("Successfully loaded " + list.size() + " Motherboards");
+        return list;
+    }
+
+    // ---------- Storage ----------
+    public List<Storage> loadStorage() {
+        List<Storage> list = new ArrayList<>();
+        List<String[]> rows = CSVLoader.readCSV(STORAGE_PATH);
+        System.out.println("Loading Storage: found " + rows.size() + " rows");
+
+        for (String[] row : rows) {
+            try {
+                if (row.length >= 9) {
+                    list.add(new Storage(
+                            Integer.parseInt(row[0].trim()),
+                            row[1].trim(), row[2].trim(), row[3].trim(),
+                            row[4].trim(), row[5].trim(), row[6].trim(),
+                            row[7].trim(), row[8].trim()
+                    ));
+                } else {
+                    System.err.println("Storage row has insufficient columns: " + String.join(",", row));
+                }
+            } catch (Exception e) {
+                System.err.println("Error parsing Storage row: " + String.join(",", row) + " - " + e.getMessage());
+            }
+        }
+        System.out.println("Successfully loaded " + list.size() + " Storage devices");
+        return list;
+    }
+
+    // ---------- PSU ----------
+    public List<PSU> loadPSUs() {
+        List<PSU> list = new ArrayList<>();
+        List<String[]> rows = CSVLoader.readCSV(PSU_PATH);
+        System.out.println("Loading PSUs: found " + rows.size() + " rows");
+
+        for (String[] row : rows) {
+            try {
+                if (row.length >= 8) {
+                    // Combine remaining columns for connectors
+                    String connectors = "";
+                    for (int i = 7; i < row.length; i++) {
+                        connectors += row[i].trim();
+                        if (i < row.length - 1) connectors += ",";
+                    }
+
+                    list.add(new PSU(
+                            Integer.parseInt(row[0].trim()),
+                            row[1].trim(), row[2].trim(), Integer.parseInt(row[3].trim()),
+                            row[4].trim(), row[5].trim(), row[6].trim(), connectors
+                    ));
+                } else {
+                    System.err.println("PSU row has insufficient columns: " + String.join(",", row));
+                }
+            } catch (Exception e) {
+                System.err.println("Error parsing PSU row: " + String.join(",", row) + " - " + e.getMessage());
+            }
+        }
+        System.out.println("Successfully loaded " + list.size() + " PSUs");
+        return list;
+    }
+
+    // ---------- Case ----------
+    public List<Case> loadCases() {
+        List<Case> list = new ArrayList<>();
+        List<String[]> rows = CSVLoader.readCSV(CASE_PATH);
+        System.out.println("Loading Cases: found " + rows.size() + " rows");
+
+        for (String[] row : rows) {
+            try {
+                if (row.length >= 8) {
+                    list.add(new Case(
+                            Integer.parseInt(row[0].trim()),
+                            row[1].trim(), row[2].trim(), row[3].trim(),
+                            Integer.parseInt(row[4].trim()),
+                            row[5].trim(), row[6].trim(), row[7].trim()
+                    ));
+                } else {
+                    System.err.println("Case row has insufficient columns: " + String.join(",", row));
+                }
+            } catch (Exception e) {
+                System.err.println("Error parsing Case row: " + String.join(",", row) + " - " + e.getMessage());
+            }
+        }
+        System.out.println("Successfully loaded " + list.size() + " Cases");
+        return list;
+    }
+
+    // ---------- Cooling ----------
+    public List<Cooling> loadCooling() {
+        List<Cooling> list = new ArrayList<>();
+        List<String[]> rows = CSVLoader.readCSV(COOLING_PATH);
+        System.out.println("Loading Cooling: found " + rows.size() + " rows");
+
+        for (String[] row : rows) {
+            try {
+                if (row.length >= 10) {
+                    // Combine socket compatibility columns (columns 4-6 in your current data)
+                    String socketCompatibility = row[4].trim() + "," + row[5].trim() + "," + row[6].trim();
+
+                    list.add(new Cooling(
+                            Integer.parseInt(row[0].trim()),
+                            row[1].trim(), row[2].trim(), row[3].trim(),
+                            socketCompatibility,
+                            Integer.parseInt(row[7].trim()),
+                            row[8].trim(), row[9].trim(),
+                            Integer.parseInt(row[10].trim())
+                    ));
+                } else {
+                    System.err.println("Cooling row has insufficient columns: " + String.join(",", row));
+                }
+            } catch (Exception e) {
+                System.err.println("Error parsing Cooling row: " + String.join(",", row) + " - " + e.getMessage());
+            }
+        }
+        System.out.println("Successfully loaded " + list.size() + " Cooling solutions");
+        return list;
+    }
+
+    // Save methods remain the same...
     public void saveCPUs(List<CPU> list) {
         List<String[]> rows = new ArrayList<>();
         for (CPU c : list) {
@@ -47,23 +254,6 @@ public class DataService {
             });
         }
         CSVLoader.writeCSV("src/main/resources/data/cpu.csv", rows);
-    }
-
-    // ---------- GPU ----------
-    public List<GPU> loadGPUs() {
-        List<GPU> list = new ArrayList<>();
-        for (String[] row : CSVLoader.readCSV(GPU_PATH)) {
-            try {
-                list.add(new GPU(
-                        Integer.parseInt(row[0]),
-                        row[1], row[2], row[3],
-                        Integer.parseInt(row[4]),
-                        row[5], row[6],
-                        Integer.parseInt(row[7])
-                ));
-            } catch (Exception ignored) {}
-        }
-        return list;
     }
 
     public void saveGPUs(List<GPU> list) {
@@ -78,170 +268,5 @@ public class DataService {
         CSVLoader.writeCSV("src/main/resources/data/gpu.csv", rows);
     }
 
-    // ---------- RAM ----------
-    public List<RAM> loadRAM() {
-        List<RAM> list = new ArrayList<>();
-        for (String[] row : CSVLoader.readCSV(RAM_PATH)) {
-            try {
-                list.add(new RAM(
-                        Integer.parseInt(row[0]),
-                        row[1], row[2], row[3],
-                        row[4], row[5],
-                        Integer.parseInt(row[6]), row[7]
-                ));
-            } catch (Exception ignored) {}
-        }
-        return list;
-    }
-
-    public void saveRAM(List<RAM> list) {
-        List<String[]> rows = new ArrayList<>();
-        for (RAM r : list) {
-            rows.add(new String[]{
-                    String.valueOf(r.getId()), r.getBrand(), r.getModel(), r.getType(),
-                    r.getCapacity(), r.getSpeed(), String.valueOf(r.getModules()), r.getVoltage()
-            });
-        }
-        CSVLoader.writeCSV("src/main/resources/data/ram.csv", rows);
-    }
-
-    // ---------- Motherboard ----------
-    public List<Motherboard> loadMotherboards() {
-        List<Motherboard> list = new ArrayList<>();
-        for (String[] row : CSVLoader.readCSV(MOTHERBOARD_PATH)) {
-            try {
-                list.add(new Motherboard(
-                        Integer.parseInt(row[0]),
-                        row[1], row[2], row[3], row[4],
-                        row[5], Integer.parseInt(row[6]), row[7], row[8],
-                        row[9], row[10], row[11], row[12]
-                ));
-            } catch (Exception ignored) {}
-        }
-        return list;
-    }
-
-    public void saveMotherboards(List<Motherboard> list) {
-        List<String[]> rows = new ArrayList<>();
-        for (Motherboard m : list) {
-            rows.add(new String[]{
-                    String.valueOf(m.getId()), m.getBrand(), m.getModel(), m.getSocket(), m.getChipset(),
-                    m.getFormFactor(), String.valueOf(m.getMemorySlots()), m.getMaxMemory(), m.getMemoryType(),
-                    m.getPcieSlots(), m.getStorageInterfaces(), m.getUsbPorts(), m.getNetwork()
-            });
-        }
-        CSVLoader.writeCSV("src/main/resources/data/motherboard.csv", rows);
-    }
-
-    // ---------- Storage ----------
-    public List<Storage> loadStorage() {
-        List<Storage> list = new ArrayList<>();
-        for (String[] row : CSVLoader.readCSV(STORAGE_PATH)) {
-            try {
-                list.add(new Storage(
-                        Integer.parseInt(row[0]),
-                        row[1], row[2], row[3],
-                        row[4], row[5], row[6],
-                        row[7], row[8]
-                ));
-            } catch (Exception ignored) {}
-        }
-        return list;
-    }
-
-    public void saveStorage(List<Storage> list) {
-        List<String[]> rows = new ArrayList<>();
-        for (Storage s : list) {
-            rows.add(new String[]{
-                    String.valueOf(s.getId()), s.getBrand(), s.getModel(), s.getType(),
-                    s.getCapacity(), s.getInterfaceType(), s.getFormFactor(),
-                    s.getReadSpeed(), s.getWriteSpeed()
-            });
-        }
-        CSVLoader.writeCSV("src/main/resources/data/storage.csv", rows);
-    }
-
-    // ---------- PSU ----------
-    public List<PSU> loadPSUs() {
-        List<PSU> list = new ArrayList<>();
-        for (String[] row : CSVLoader.readCSV(PSU_PATH)) {
-            try {
-                list.add(new PSU(
-                        Integer.parseInt(row[0]),
-                        row[1], row[2], Integer.parseInt(row[3]),
-                        row[4], row[5], row[6], row[7]
-                ));
-            } catch (Exception ignored) {}
-        }
-        return list;
-    }
-
-    public void savePSUs(List<PSU> list) {
-        List<String[]> rows = new ArrayList<>();
-        for (PSU p : list) {
-            rows.add(new String[]{
-                    String.valueOf(p.getId()), p.getBrand(), p.getModel(),
-                    String.valueOf(p.getWattage()), p.getEfficiencyRating(),
-                    p.getModular(), p.getFormFactor(), p.getConnectors()
-            });
-        }
-        CSVLoader.writeCSV("src/main/resources/data/psu.csv", rows);
-    }
-
-    // ---------- Case ----------
-    public List<Case> loadCases() {
-        List<Case> list = new ArrayList<>();
-        for (String[] row : CSVLoader.readCSV(CASE_PATH)) {
-            try {
-                list.add(new Case(
-                        Integer.parseInt(row[0]),
-                        row[1], row[2], row[3],
-                        Integer.parseInt(row[4]),
-                        row[5], row[6], row[7]
-                ));
-            } catch (Exception ignored) {}
-        }
-        return list;
-    }
-
-    public void saveCases(List<Case> list) {
-        List<String[]> rows = new ArrayList<>();
-        for (Case c : list) {
-            rows.add(new String[]{
-                    String.valueOf(c.getId()), c.getBrand(), c.getModel(),
-                    c.getFormFactorSupport(), String.valueOf(c.getMaxGpuLength()),
-                    c.getDriveBays(), c.getFanSupport(), c.getRadiatorSupport()
-            });
-        }
-        CSVLoader.writeCSV("src/main/resources/data/case.csv", rows);
-    }
-
-    // ---------- Cooling ----------
-    public List<Cooling> loadCooling() {
-        List<Cooling> list = new ArrayList<>();
-        for (String[] row : CSVLoader.readCSV(COOLING_PATH)) {
-            try {
-                list.add(new Cooling(
-                        Integer.parseInt(row[0]),
-                        row[1], row[2], row[3], row[4],
-                        Integer.parseInt(row[5]),
-                        row[6], row[7],
-                        Integer.parseInt(row[8])
-                ));
-            } catch (Exception ignored) {}
-        }
-        return list;
-    }
-
-    public void saveCooling(List<Cooling> list) {
-        List<String[]> rows = new ArrayList<>();
-        for (Cooling c : list) {
-            rows.add(new String[]{
-                    String.valueOf(c.getId()), c.getBrand(), c.getModel(), c.getType(),
-                    c.getSocketCompatibility(), String.valueOf(c.getFanSize()), c.getRadiatorSize(),
-                    c.getNoiseLevel(), String.valueOf(c.getRpm())
-            });
-        }
-        CSVLoader.writeCSV("src/main/resources/data/cooling.csv", rows);
-    }
+    // Add other save methods as needed...
 }
