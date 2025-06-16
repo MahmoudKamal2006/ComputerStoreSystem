@@ -1,3 +1,20 @@
-1,Noctua,NH-U12S,Air,AM4,AM5,LGA1700,120,0,22,1500
-2,Corsair,H100i Elite,AIO Liquid,AM5,LGA1700,AM4,120,240,25,2000
-3,DeepCool,AK400,Air,LGA1200,AM4,AM5,120,0,24,1850
+1,NZXT,H510,ATX,381,2x 3.5",2x 2.5",2x 120mm,240mm
+2,Cooler Master,MasterBox MB511,ATX,410,2x 3.5",3x 2.5",3x 120mm,360mm
+3,Fractal Design,Meshify C,ATX,315,2x 3.5",2x 2.5",2x 120mm,240mm
+4,Corsair,4000D Airflow,ATX,360,2x 3.5",2x 2.5",3x 120mm,360mm
+5,be quiet!,Pure Base 500DX,ATX,369,2x 3.5",3x 2.5",3x 140mm,280mm
+6,Phanteks,Eclipse P400A,ATX,420,2x 3.5",2x 2.5",3x 120mm,240mm
+7,Lian Li,Lancool 215,ATX,395,2x 3.5",2x 2.5",2x 200mm,280mm
+8,Thermaltake,Core H18,Micro-ATX,355,2x 3.5",2x 2.5",2x 120mm,240mm
+9,Silverstone,SG13,Mini-ITX,267,1x 3.5",1x 2.5",1x 120mm,120mm
+10,NZXT,H210,Mini-ITX,325,1x 3.5",2x 2.5",2x 120mm,240mm
+11,Corsair,iCUE 5000X,E-ATX,400,4x 3.5",6x 2.5",3x 120mm,360mm
+12,Fractal Design,Define 7,E-ATX,440,6x 3.5",5x 2.5",3x 140mm,420mm
+13,be quiet!,Silent Base 802,E-ATX,435,6x 3.5",9x 2.5",3x 140mm,420mm
+14,Cooler Master,HAF 700 EVO,E-ATX,490,4x 3.5",8x 2.5",4x 200mm,420mm
+15,Phanteks,Enthoo Pro 2,E-ATX,467,8x 3.5",4x 2.5",3x 140mm,420mm
+16,Lian Li,PC-O11 Dynamic,ATX,395,0x 3.5",4x 2.5",9x 120mm,360mm
+17,Thermaltake,View 51,ATX,410,2x 3.5",3x 2.5",3x 120mm,360mm
+18,Silverstone,Primera PM02,ATX,330,4x 3.5",6x 2.5",2x 120mm,240mm
+19,NZXT,H7 Flow,ATX,413,2x 3.5",4x 2.5",3x 120mm,360mm
+20,Corsair,2000D Airflow,Micro-ATX,330,2x 3.5",4x 2.5",2x 120mm,240mm
