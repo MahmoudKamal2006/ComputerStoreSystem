@@ -2,133 +2,125 @@ package com.mahmoud.computerstore.controller;
 
 import com.mahmoud.computerstore.model.*;
 import com.mahmoud.computerstore.service.DataService;
+import com.mahmoud.computerstore.util.CompatibilityChecker;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Handles logic for building a custom PC step by step with compatibility.
- */
 public class BuildController {
 
-    private final DataService dataService;
-    private final Build currentBuild;
+    private Build currentBuild;
 
-    private final List<CPU> allCpus;
-    private final List<Motherboard> allMotherboards;
-    private final List<RAM> allRam;
-    private final List<GPU> allGpus;
-    private final List<Storage> allStorage;
-    private final List<PSU> allPsus;
-    private final List<Case> allCases;
-    private final List<Cooling> allCooling;
+    private List<CPU> cpus;
+    private List<Motherboard> motherboards;
+    private List<Cooling> coolers;
+    private List<RAM> rams;
+    private List<Storage> storageDevices;
+    private List<GPU> gpus;
+    private List<Case> cases;
+    private List<PSU> psus;
 
     public BuildController() {
-        this.dataService = new DataService();
-        this.currentBuild = new Build(null, null, null, null, null, null, null, null);
-
-        this.allCpus = dataService.loadCPUs();
-        this.allMotherboards = dataService.loadMotherboards();
-        this.allRam = dataService.loadRAM();
-        this.allGpus = dataService.loadGPUs();
-        this.allStorage = dataService.loadStorage();
-        this.allPsus = dataService.loadPSUs();
-        this.allCases = dataService.loadCases();
-        this.allCooling = dataService.loadCooling();
+        DataService data = new DataService();
+        cpus = data.loadCPUs();
+        motherboards = data.loadMotherboards();
+        coolers = data.loadCooling();
+        rams = data.loadRAM();
+        storageDevices = data.loadStorage();
+        gpus = data.loadGPUs();
+        cases = data.loadCases();
+        psus = data.loadPSUs();
+        currentBuild = new Build();
     }
 
-    // ---------------- CPU ----------------
+    // Get all CPUs
     public List<CPU> getAvailableCPUs() {
-        return allCpus;
+        return cpus;
     }
 
+    // Return all motherboards (used only for testing/debug)
+    public List<Motherboard> getAllMotherboards() {
+        return motherboards;
+    }
+
+    // Return only compatible motherboards
+    public List<Motherboard> getCompatibleMotherboards() {
+        CPU cpu = currentBuild.getCpu();
+        if (cpu == null) return new ArrayList<>();
+        return motherboards.stream()
+                .filter(mb -> CompatibilityChecker.isCompatible(cpu, mb))
+                .collect(Collectors.toList());
+    }
+
+    public List<Cooling> getCompatibleCooling() {
+        CPU cpu = currentBuild.getCpu();
+        if (cpu == null) return new ArrayList<>();
+        return coolers.stream()
+                .filter(cooler -> CompatibilityChecker.isCompatible(cpu, cooler))
+                .collect(Collectors.toList());
+    }
+
+    public List<RAM> getCompatibleRAM() {
+        CPU cpu = currentBuild.getCpu();
+        Motherboard mb = currentBuild.getMotherboard();
+        if (cpu == null || mb == null) return new ArrayList<>();
+        return rams.stream()
+                .filter(ram -> CompatibilityChecker.isCompatible(cpu, ram, mb))
+                .collect(Collectors.toList());
+    }
+
+    public List<Storage> getAvailableStorage() {
+        return storageDevices;
+    }
+
+    public List<GPU> getAvailableGPUs() {
+        return gpus;
+    }
+
+    public List<Case> getAvailableCases() {
+        return cases;
+    }
+
+    public List<PSU> getCompatiblePSUs() {
+        return psus.stream()
+                .filter(psu -> CompatibilityChecker.isCompatible(currentBuild, psu))
+                .collect(Collectors.toList());
+    }
+
+    // Selection setters
     public void selectCPU(CPU cpu) {
         currentBuild.setCpu(cpu);
     }
 
-    // ---------------- Motherboard ----------------
-    public List<Motherboard> getCompatibleMotherboards() {
-        CPU cpu = currentBuild.getCpu();
-        if (cpu == null) return List.of();
-        return allMotherboards.stream()
-                .filter(mb -> mb.getSocket().equalsIgnoreCase(cpu.getSocket()))
-                .collect(Collectors.toList());
-    }
-
-    public void selectMotherboard(Motherboard mb) {
-        currentBuild.setMotherboard(mb);
-    }
-
-    // ---------------- Cooler ----------------
-    public List<Cooling> getCompatibleCooling() {
-        CPU cpu = currentBuild.getCpu();
-        if (cpu == null) return List.of();
-        return allCooling.stream()
-                .filter(cooler -> cooler.getSocketCompatibility().toLowerCase().contains(cpu.getSocket().toLowerCase()))
-                .collect(Collectors.toList());
+    public void selectMotherboard(Motherboard motherboard) {
+        currentBuild.setMotherboard(motherboard);
     }
 
     public void selectCooling(Cooling cooling) {
         currentBuild.setCooling(cooling);
     }
 
-    // ---------------- RAM ----------------
-    public List<RAM> getCompatibleRAM() {
-        Motherboard mb = currentBuild.getMotherboard();
-        if (mb == null) return List.of();
-        return allRam.stream()
-                .filter(ram -> ram.getType().equalsIgnoreCase(mb.getMemoryType()))
-                .collect(Collectors.toList());
-    }
-
     public void selectRAM(RAM ram) {
         currentBuild.setRam(ram);
-    }
-
-    // ---------------- Storage ----------------
-    public List<Storage> getAvailableStorage() {
-        return allStorage;
     }
 
     public void selectStorage(Storage storage) {
         currentBuild.setStorage(storage);
     }
 
-    // ---------------- GPU ----------------
-    public List<GPU> getAvailableGPUs() {
-        return allGpus;
-    }
-
     public void selectGPU(GPU gpu) {
         currentBuild.setGpu(gpu);
-    }
-
-    // ---------------- Case ----------------
-    public List<Case> getAvailableCases() {
-        return allCases;
     }
 
     public void selectCase(Case pcCase) {
         currentBuild.setPcCase(pcCase);
     }
 
-    // ---------------- PSU ----------------
-    public List<PSU> getCompatiblePSUs() {
-        CPU cpu = currentBuild.getCpu();
-        GPU gpu = currentBuild.getGpu();
-        if (cpu == null || gpu == null) return allPsus;
-
-        int requiredPower = cpu.getTdp() + gpu.getTdp() + 150; // +150 for other components
-        return allPsus.stream()
-                .filter(psu -> psu.getWattage() >= requiredPower)
-                .collect(Collectors.toList());
-    }
-
     public void selectPSU(PSU psu) {
         currentBuild.setPsu(psu);
     }
 
-    // ---------------- Final Build ----------------
     public Build getCurrentBuild() {
         return currentBuild;
     }
