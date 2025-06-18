@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 40;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,12 +20,12 @@
             <Font name="Arial Rounded MT Bold" size="30.0" />
          </font>
       </Label>
-      <Button layoutX="87.0" layoutY="317.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Inventory" textAlignment="CENTER">
+      <Button layoutX="87.0" layoutY="317.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Inventory" textAlignment="CENTER" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="437.0" AnchorPane.topAnchor="317.0">
          <effect>
             <DropShadow />
          </effect>
       </Button>
-      <Button layoutX="437.0" layoutY="317.0" mnemonicParsing="false" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="PC Builder" textAlignment="CENTER">
+      <Button layoutX="437.0" layoutY="317.0" mnemonicParsing="false" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="PC Builder" textAlignment="CENTER" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="317.0">
          <effect>
             <DropShadow />
          </effect>
