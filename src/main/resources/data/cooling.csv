@@ -1,20 +1,20 @@
-1,NZXT,H510,ATX,381,2x 3.5",2x 2.5",2x 120mm,240mm
-2,Cooler Master,MasterBox MB511,ATX,410,2x 3.5",3x 2.5",3x 120mm,360mm
-3,Fractal Design,Meshify C,ATX,315,2x 3.5",2x 2.5",2x 120mm,240mm
-4,Corsair,4000D Airflow,ATX,360,2x 3.5",2x 2.5",3x 120mm,360mm
-5,be quiet!,Pure Base 500DX,ATX,369,2x 3.5",3x 2.5",3x 140mm,280mm
-6,Phanteks,Eclipse P400A,ATX,420,2x 3.5",2x 2.5",3x 120mm,240mm
-7,Lian Li,Lancool 215,ATX,395,2x 3.5",2x 2.5",2x 200mm,280mm
-8,Thermaltake,Core H18,Micro-ATX,355,2x 3.5",2x 2.5",2x 120mm,240mm
-9,Silverstone,SG13,Mini-ITX,267,1x 3.5",1x 2.5",1x 120mm,120mm
-10,NZXT,H210,Mini-ITX,325,1x 3.5",2x 2.5",2x 120mm,240mm
-11,Corsair,iCUE 5000X,E-ATX,400,4x 3.5",6x 2.5",3x 120mm,360mm
-12,Fractal Design,Define 7,E-ATX,440,6x 3.5",5x 2.5",3x 140mm,420mm
-13,be quiet!,Silent Base 802,E-ATX,435,6x 3.5",9x 2.5",3x 140mm,420mm
-14,Cooler Master,HAF 700 EVO,E-ATX,490,4x 3.5",8x 2.5",4x 200mm,420mm
-15,Phanteks,Enthoo Pro 2,E-ATX,467,8x 3.5",4x 2.5",3x 140mm,420mm
-16,Lian Li,PC-O11 Dynamic,ATX,395,0x 3.5",4x 2.5",9x 120mm,360mm
-17,Thermaltake,View 51,ATX,410,2x 3.5",3x 2.5",3x 120mm,360mm
-18,Silverstone,Primera PM02,ATX,330,4x 3.5",6x 2.5",2x 120mm,240mm
-19,NZXT,H7 Flow,ATX,413,2x 3.5",4x 2.5",3x 120mm,360mm
-20,Corsair,2000D Airflow,Micro-ATX,330,2x 3.5",4x 2.5",2x 120mm,240mm
+1,Noctua,NH-U12S,Air,AM4,AM5,LGA1700,120,0mm,22dB,1500
+2,Corsair,H100i Elite,AIO Liquid,AM5,LGA1700,AM4,120,240mm,25dB,2000
+3,DeepCool,AK400,Air,LGA1200,AM4,AM5,120,0mm,24dB,1850
+4,be quiet!,Dark Rock Pro 4,Air,AM4,LGA1700,LGA1200,135,0mm,24.3dB,1500
+5,Arctic,Liquid Freezer II 280,AIO Liquid,AM4,AM5,LGA1700,140,280mm,32dB,1700
+6,Noctua,NH-D15,Air,AM4,AM5,LGA1700,140,0mm,24.6dB,1500
+7,Corsair,H150i Elite,AIO Liquid,AM4,AM5,LGA1700,120,360mm,37dB,2100
+8,Cooler Master,Hyper 212 EVO,Air,AM4,LGA1700,LGA1200,120,0mm,31dB,2000
+9,NZXT,Kraken X63,AIO Liquid,AM4,AM5,LGA1700,140,280mm,21dB,1800
+10,be quiet!,Pure Rock 2,Air,AM4,LGA1700,LGA1200,120,0mm,26.8dB,1500
+11,Arctic,Freezer 34 eSports DUO,Air,AM4,AM5,LGA1700,120,0mm,33dB,2100
+12,Corsair,H60,AIO Liquid,AM4,LGA1700,LGA1200,120,120mm,25dB,1700
+13,Noctua,NH-L9a,Air,AM4,AM5,LGA1151,92,0mm,23.6dB,2500
+14,Scythe,Fuma 2,Air,AM4,LGA1700,LGA1200,120,0mm,25dB,1200
+15,EK,AIO 240 D-RGB,AIO Liquid,AM4,AM5,LGA1700,120,240mm,29.7dB,1800
+16,be quiet!,Shadow Rock 3,Air,AM4,LGA1700,LGA1200,120,0mm,24.4dB,1400
+17,Arctic,Liquid Freezer II 420,AIO Liquid,AM4,AM5,LGA1700,140,420mm,38dB,1700
+18,Cooler Master,MasterLiquid ML240L,AIO Liquid,AM4,LGA1700,LGA1200,120,240mm,30dB,1800
+19,Noctua,NH-U9S,Air,AM4,AM5,LGA1700,92,0mm,22.8dB,2000
+20,NZXT,Kraken Z73,AIO Liquid,AM4,AM5,LGA1700,120,360mm,21dB,2000
