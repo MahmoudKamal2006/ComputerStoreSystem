@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class PSUController {
+public class CaseController {
 
     @FXML
     private void goBack(ActionEvent event) {
@@ -16,9 +16,9 @@ public class PSUController {
     }
 
     @FXML
-    private void addPsu(ActionEvent event) {
-        System.out.println("⚡ Add PSU button clicked - Coming Soon!");
-        // TODO: Implement add PSU functionality
+    private void addCase(ActionEvent event) {
+        System.out.println("📦 Add Case button clicked - Coming Soon!");
+        // TODO: Implement add Case functionality
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {
