@@ -34,7 +34,7 @@
                 <TableColumn fx:id="capacityColumn" prefWidth="70.0" text="Capacity" />
                 <TableColumn fx:id="interfaceColumn" prefWidth="60.0" text="Interface" />
                 <TableColumn fx:id="formFactorColumn" prefWidth="75.0" text="Form Factor" />
-                <TableColumn fx:id="readSpeedColumn" prefWidth="70.0" text="Read Speed" />
+                <TableColumn fx:id="readSpeedColumn" prefWidth="70.0" text="Read" />
             </columns>
         </TableView>
         <TextField fx:id="idField" promptText="ID" layoutX="20.0" layoutY="310.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
@@ -72,7 +72,7 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <TextField fx:id="readSpeedField" promptText="Read Speed" layoutX="510.0" layoutY="310.0" prefWidth="70.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+        <TextField fx:id="readSpeedField" promptText="Read" layoutX="510.0" layoutY="310.0" prefWidth="70.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
