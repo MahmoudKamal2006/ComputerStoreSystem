@@ -1,7 +1,7 @@
 // Apply the application and JavaFX plugins
 plugins {
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.14'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 // Project coordinates
@@ -15,13 +15,13 @@ repositories {
 
 // Java compilation settings
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 // JavaFX plugin configuration
 javafx {
-    version = '20'
+    version = '21'
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
@@ -37,14 +37,15 @@ dependencies {
     // Add any other dependencies here if needed later
 }
 
-// Optional: Configure the run task
+// Configure the run task with proper JavaFX module path
 run {
     // Enable console input if needed
     standardInput = System.in
 
-    // JVM arguments for JavaFX (automatically handled by plugin, but good to have)
+    // JVM arguments for JavaFX
     jvmArgs = [
-            '--add-opens', 'javafx.fxml/javafx.fxml=ALL-UNNAMED'
+            '--add-opens', 'javafx.fxml/javafx.fxml=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.lang.reflect=ALL-UNNAMED'
     ]
 }
 
