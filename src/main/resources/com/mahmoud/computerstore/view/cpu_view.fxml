@@ -39,47 +39,47 @@
             <TableColumn fx:id="powerColumn" prefWidth="65.0" style="-fx-background-radius: 8;" text="Power" />
         </columns>
       </TableView>
-      <TextField fx:id="idField" floatText="ID" layoutX="20.0" layoutY="310.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="idField" promptText="ID" layoutX="20.0" layoutY="310.0" prefHeight="25.0" prefWidth="35.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="brandField" floatText="Brand" layoutX="55.0" layoutY="310.0" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="brandField" promptText="Brand" layoutX="55.0" layoutY="310.0" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="modelField" floatText="Model" layoutX="115.0" layoutY="310.0" prefWidth="110.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="modelField" promptText="Model" layoutX="115.0" layoutY="310.0" prefWidth="110.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="socketField" floatText="Socket" layoutX="225.0" layoutY="310.0" prefWidth="55.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="socketField" promptText="Socket" layoutX="225.0" layoutY="310.0" prefWidth="55.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="tdpField" floatText="TDP" layoutX="280.0" layoutY="310.0" prefWidth="45.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="tdpField" promptText="TDP" layoutX="280.0" layoutY="310.0" prefWidth="45.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="chipsetField" floatText="Chipset" layoutX="325.0" layoutY="310.0" prefWidth="65.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="chipsetField" promptText="Chipset" layoutX="325.0" layoutY="310.0" prefWidth="65.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="pcieField" floatText="PCIe" layoutX="390.0" layoutY="310.0" prefWidth="50.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="pcieField" promptText="PCIe" layoutX="390.0" layoutY="310.0" prefWidth="50.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="memoryField" floatText="Memory" layoutX="440.0" layoutY="310.0" prefWidth="75.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="memoryField" promptText="Memory" layoutX="440.0" layoutY="310.0" prefWidth="75.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="powerField" floatText="Power" layoutX="515.0" layoutY="310.0" prefWidth="65.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
+      <TextField fx:id="powerField" promptText="Power" layoutX="515.0" layoutY="310.0" prefWidth="65.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>

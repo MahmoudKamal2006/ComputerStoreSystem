@@ -25,7 +25,7 @@
                 <DropShadow />
             </effect>
         </Button>
-        <TableView fx:id="coolingTable" layoutX="20.0" layoutY="20.0" prefHeight="295.0" prefWidth="560.0" style="-fx-background-radius: 8; -fx-background-color: rgba(68, 103, 119, 0.25); -fx-border-color: rgba(255, 255, 255, 0.3); -fx-border-width: 1; -fx-border-radius: 8; -fx-effect: dropshadow;">
+        <TableView fx:id="gpuTable" layoutX="20.0" layoutY="20.0" prefHeight="295.0" prefWidth="560.0" style="-fx-background-radius: 8; -fx-background-color: rgba(68, 103, 119, 0.25); -fx-border-color: rgba(255, 255, 255, 0.3); -fx-border-width: 1; -fx-border-radius: 8; -fx-effect: dropshadow;">
             <columns>
                 <TableColumn fx:id="idColumn" prefWidth="35.0" text="ID" />
                 <TableColumn fx:id="brandColumn" prefWidth="70.0" text="Brand" />
@@ -83,7 +83,7 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <Button fx:id="addCoolingButton" contentDisplay="CENTER" layoutX="490.0" layoutY="360.0" mnemonicParsing="false" onAction="#addCooling" prefHeight="30.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Add Cooling" textAlignment="CENTER" textFill="WHITE">
+        <Button fx:id="addGpuButton" contentDisplay="CENTER" layoutX="490.0" layoutY="360.0" mnemonicParsing="false" onAction="#addGpu" prefHeight="30.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Add GPU" textAlignment="CENTER" textFill="WHITE">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
