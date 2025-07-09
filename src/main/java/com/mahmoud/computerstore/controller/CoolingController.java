@@ -42,7 +42,7 @@ public class CoolingController implements Initializable {
     private TableColumn<Cooling, String> socketColumn;
 
     @FXML
-    private TableColumn<Cooling, String> fanSizeColumn;
+    private TableColumn<Cooling, Integer> fanSizeColumn;
 
     @FXML
     private TableColumn<Cooling, String> radiatorColumn;
@@ -96,7 +96,7 @@ public class CoolingController implements Initializable {
         fanSizeColumn.setCellValueFactory(new PropertyValueFactory<>("fanSize"));
         radiatorColumn.setCellValueFactory(new PropertyValueFactory<>("radiatorSize"));
         noiseColumn.setCellValueFactory(new PropertyValueFactory<>("noiseLevel"));
-        rpmColumn.setCellValueFactory(new PropertyValueFactory<>("maxRpm"));
+        rpmColumn.setCellValueFactory(new PropertyValueFactory<>("rpm"));
 
         loadCoolingData();
     }

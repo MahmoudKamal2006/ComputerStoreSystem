@@ -86,7 +86,7 @@ public class PSUController implements Initializable {
         brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
         modelColumn.setCellValueFactory(new PropertyValueFactory<>("model"));
         wattageColumn.setCellValueFactory(new PropertyValueFactory<>("wattage"));
-        efficiencyColumn.setCellValueFactory(new PropertyValueFactory<>("efficiency"));
+        efficiencyColumn.setCellValueFactory(new PropertyValueFactory<>("efficiencyRating"));
         modularColumn.setCellValueFactory(new PropertyValueFactory<>("modular"));
         formFactorColumn.setCellValueFactory(new PropertyValueFactory<>("formFactor"));
         connectorsColumn.setCellValueFactory(new PropertyValueFactory<>("connectors"));

@@ -30,11 +30,11 @@
                 <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID" />
                 <TableColumn fx:id="brandColumn" prefWidth="65.0" text="Brand" />
                 <TableColumn fx:id="modelColumn" prefWidth="110.0" text="Model" />
-                <TableColumn fx:id="wattageColumn" prefWidth="60.0" text="Wattage" />
-                <TableColumn fx:id="efficiencyColumn" prefWidth="75.0" text="Efficiency" />
-                <TableColumn fx:id="modularColumn" prefWidth="65.0" text="Modular" />
-                <TableColumn fx:id="formFactorColumn" prefWidth="70.0" text="Form" />
-                <TableColumn fx:id="connectorsColumn" prefWidth="85.0" text="Connectors" />
+                <TableColumn fx:id="formFactorColumn" prefWidth="75.0" text="Form Factor" />
+                <TableColumn fx:id="maxGpuLengthColumn" prefWidth="70.0" text="Max GPU" />
+                <TableColumn fx:id="driveBaysColumn" prefWidth="80.0" text="Drive Bays" />
+                <TableColumn fx:id="fanSupportColumn" prefWidth="80.0" text="Fan Support" />
+                <TableColumn fx:id="radiatorSupportColumn" prefWidth="85.0" text="Radiator" />
             </columns>
         </TableView>
         <TextField fx:id="idField" promptText="ID" layoutX="20.0" layoutY="310.0" prefHeight="25.0" prefWidth="30.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">

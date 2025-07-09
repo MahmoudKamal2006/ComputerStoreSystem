@@ -30,12 +30,12 @@
                 <TableColumn fx:id="idColumn" prefWidth="35.0" text="ID" />
                 <TableColumn fx:id="brandColumn" prefWidth="70.0" text="Brand" />
                 <TableColumn fx:id="modelColumn" prefWidth="100.0" text="Model" />
-                <TableColumn fx:id="typeColumn" prefWidth="50.0" text="Type" />
-                <TableColumn fx:id="socketColumn" prefWidth="80.0" text="Socket" />
-                <TableColumn fx:id="fanSizeColumn" prefWidth="50.0" text="Fan" />
-                <TableColumn fx:id="radiatorColumn" prefWidth="70.0" text="Radiator" />
-                <TableColumn fx:id="noiseColumn" prefWidth="50.0" text="Noise" />
-                <TableColumn fx:id="rpmColumn" prefWidth="55.0" text="RPM" />
+                <TableColumn fx:id="typeColumn" prefWidth="80.0" text="Interface" />
+                <TableColumn fx:id="socketColumn" prefWidth="50.0" text="TDP" />
+                <TableColumn fx:id="fanSizeColumn" prefWidth="60.0" text="VRAM" />
+                <TableColumn fx:id="radiatorColumn" prefWidth="80.0" text="Power Conn" />
+                <TableColumn fx:id="noiseColumn" prefWidth="60.0" text="Length" />
+                <TableColumn fx:id="rpmColumn" prefWidth="60.0" text="Length" />
             </columns>
         </TableView>
         <TextField fx:id="idField" layoutX="20.0" layoutY="310.0" prefHeight="25.0" prefWidth="35.0" promptText="ID" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #446777;">

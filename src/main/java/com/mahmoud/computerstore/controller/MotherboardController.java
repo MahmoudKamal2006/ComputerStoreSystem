@@ -96,7 +96,7 @@ public class MotherboardController implements Initializable {
         formFactorColumn.setCellValueFactory(new PropertyValueFactory<>("formFactor"));
         memorySlotsColumn.setCellValueFactory(new PropertyValueFactory<>("memorySlots"));
         memoryTypeColumn.setCellValueFactory(new PropertyValueFactory<>("memoryType"));
-        networkColumn.setCellValueFactory(new PropertyValueFactory<>("networkController"));
+        networkColumn.setCellValueFactory(new PropertyValueFactory<>("network"));
 
         loadMotherboardData();
     }

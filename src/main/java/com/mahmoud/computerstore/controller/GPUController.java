@@ -39,7 +39,7 @@ public class GPUController implements Initializable {
     private TableColumn<GPU, String> typeColumn;
 
     @FXML
-    private TableColumn<GPU, String> socketColumn;
+    private TableColumn<GPU, Integer> socketColumn;
 
     @FXML
     private TableColumn<GPU, String> fanSizeColumn;
@@ -48,10 +48,10 @@ public class GPUController implements Initializable {
     private TableColumn<GPU, String> radiatorColumn;
 
     @FXML
-    private TableColumn<GPU, String> noiseColumn;
+    private TableColumn<GPU, Integer> noiseColumn;
 
     @FXML
-    private TableColumn<GPU, String> rpmColumn;
+    private TableColumn<GPU, Integer> rpmColumn;
 
     // TextFields
     @FXML

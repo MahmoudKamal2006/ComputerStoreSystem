@@ -36,19 +36,19 @@ public class CaseController implements Initializable {
     private TableColumn<Case, String> modelColumn;
 
     @FXML
-    private TableColumn<Case, String> wattageColumn;
-
-    @FXML
-    private TableColumn<Case, String> efficiencyColumn;
-
-    @FXML
-    private TableColumn<Case, String> modularColumn;
-
-    @FXML
     private TableColumn<Case, String> formFactorColumn;
 
     @FXML
-    private TableColumn<Case, String> connectorsColumn;
+    private TableColumn<Case, Integer> maxGpuLengthColumn;
+
+    @FXML
+    private TableColumn<Case, String> driveBaysColumn;
+
+    @FXML
+    private TableColumn<Case, String> fanSupportColumn;
+
+    @FXML
+    private TableColumn<Case, String> radiatorSupportColumn;
 
     // TextFields
     @FXML
@@ -61,19 +61,19 @@ public class CaseController implements Initializable {
     private TextField modelField;
 
     @FXML
-    private TextField wattageField;
-
-    @FXML
-    private TextField efficiencyField;
-
-    @FXML
-    private TextField modularField;
-
-    @FXML
     private TextField formFactorField;
 
     @FXML
-    private TextField connectorsField;
+    private TextField maxGpuLengthField;
+
+    @FXML
+    private TextField driveBaysField;
+
+    @FXML
+    private TextField fanSupportField;
+
+    @FXML
+    private TextField radiatorSupportField;
 
     private DataService dataService;
     private ObservableList<Case> caseList;
@@ -85,11 +85,11 @@ public class CaseController implements Initializable {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
         modelColumn.setCellValueFactory(new PropertyValueFactory<>("model"));
-        wattageColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-        efficiencyColumn.setCellValueFactory(new PropertyValueFactory<>("maxGpuLength"));
-        modularColumn.setCellValueFactory(new PropertyValueFactory<>("storageSlots"));
         formFactorColumn.setCellValueFactory(new PropertyValueFactory<>("formFactorSupport"));
-        connectorsColumn.setCellValueFactory(new PropertyValueFactory<>("ioConnectors"));
+        maxGpuLengthColumn.setCellValueFactory(new PropertyValueFactory<>("maxGpuLength"));
+        driveBaysColumn.setCellValueFactory(new PropertyValueFactory<>("driveBays"));
+        fanSupportColumn.setCellValueFactory(new PropertyValueFactory<>("fanSupport"));
+        radiatorSupportColumn.setCellValueFactory(new PropertyValueFactory<>("radiatorSupport"));
 
         loadCaseData();
     }
