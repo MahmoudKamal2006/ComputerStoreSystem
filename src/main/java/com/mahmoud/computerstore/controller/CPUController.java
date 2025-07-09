@@ -6,9 +6,47 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CPUController {
+
+    // TableView and columns - matching your cpu_view.fxml exactly
+    @FXML
+    private TableView cpuTable;
+
+    @FXML
+    private TableColumn idColumn;
+
+    @FXML
+    private TableColumn brandColumn;
+
+    @FXML
+    private TableColumn modelColumn;
+
+    @FXML
+    private TableColumn socketColumn;
+
+    @FXML
+    private TableColumn tdpColumn;
+
+    @FXML
+    private TableColumn chipsetColumn;
+
+    @FXML
+    private TableColumn pcieColumn;
+
+    @FXML
+    private TableColumn memoryColumn;
+
+    @FXML
+    private TableColumn powerColumn;
+
+    // TextFields - matching your FXML
+    @FXML
+    private TextField idField;
 
     @FXML
     private void goBack(ActionEvent event) {
