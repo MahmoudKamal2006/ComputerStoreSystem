@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CPUController {
-
+    //Tables
     @FXML
     private TableView cpuTable;
 
@@ -42,9 +42,24 @@ public class CPUController {
 
     @FXML
     private TableColumn powerColumn;
-
+    //Text Fields
     @FXML
     private TextField idField;
+
+    @FXML
+    private TextField brandField;
+
+    @FXML
+    private TextField modelField;
+
+    @FXML
+    private TextField socketField;
+
+    @FXML
+    private TextField tdpField;
+
+    @FXML
+    private TextField chipsetField;
 
     @FXML
     private void goBack(ActionEvent event) {

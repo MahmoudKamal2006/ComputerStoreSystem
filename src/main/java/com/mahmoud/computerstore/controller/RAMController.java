@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class RAMController {
-
+    //Tables
     @FXML
     private TableView ramTable;
 
@@ -39,7 +39,7 @@ public class RAMController {
 
     @FXML
     private TableColumn voltageColumn;
-
+    //Text Fields
     @FXML
     private TextField idField;
 
@@ -51,6 +51,18 @@ public class RAMController {
 
     @FXML
     private TextField typeField;
+
+    @FXML
+    private TextField capacityField;
+
+    @FXML
+    private TextField speedField;
+
+    @FXML
+    private TextField modulesField;
+
+    @FXML
+    private TextField voltageField;
 
     @FXML
     private void goBack(ActionEvent event) {

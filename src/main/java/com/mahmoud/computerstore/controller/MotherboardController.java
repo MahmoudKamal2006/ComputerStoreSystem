@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 public class MotherboardController {
 
+    //Tables
     @FXML
     private TableView motherboardTable;
 
@@ -43,6 +44,7 @@ public class MotherboardController {
     @FXML
     private TableColumn networkColumn;
 
+    //Text Fields
     @FXML
     private TextField idField;
 
@@ -57,6 +59,20 @@ public class MotherboardController {
 
     @FXML
     private TextField chipsetField;
+
+    @FXML
+    private TextField formFactorField;
+
+    @FXML
+    private TextField memorySlotsField;
+
+    @FXML
+    private TextField memoryTypeField;
+
+    @FXML
+    private TextField networkField;
+
+
 
     @FXML
     private void goBack(ActionEvent event) {

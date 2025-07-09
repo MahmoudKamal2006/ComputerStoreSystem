@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CoolingController {
-
+    //Tables
     @FXML
     private TableView coolingTable;
 
@@ -42,7 +42,7 @@ public class CoolingController {
 
     @FXML
     private TableColumn rpmColumn;
-
+    //Text Flields
     @FXML
     private TextField idField;
 
@@ -57,6 +57,18 @@ public class CoolingController {
 
     @FXML
     private TextField socketField;
+
+    @FXML
+    private TextField fanSizeField;
+
+    @FXML
+    private TextField radiatorField;
+
+    @FXML
+    private TextField noiseField;
+
+    @FXML
+    private TextField rpmField;
 
     @FXML
     private void goBack(ActionEvent event) {

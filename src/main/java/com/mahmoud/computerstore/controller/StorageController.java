@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class StorageController {
-
+    //Tables
     @FXML
     private TableView storageTable;
 
@@ -40,6 +40,7 @@ public class StorageController {
     @FXML
     private TableColumn readSpeedColumn;
 
+    //Text Fields
     @FXML
     private TextField idField;
 
@@ -51,6 +52,18 @@ public class StorageController {
 
     @FXML
     private TextField typeField;
+
+    @FXML
+    private TextField capacityField;
+
+    @FXML
+    private TextField interfaceField;
+
+    @FXML
+    private TextField formFactorField;
+
+    @FXML
+    private TextField readSpeedField;
 
     @FXML
     private void goBack(ActionEvent event) {
