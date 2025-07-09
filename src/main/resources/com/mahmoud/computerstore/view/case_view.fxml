@@ -77,7 +77,7 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <Button fx:id="addCaseButton" contentDisplay="CENTER" layoutX="510.0" layoutY="360.0" mnemonicParsing="false" onAction="#addCase" prefHeight="30.0" prefWidth="70.0" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Add PSU" textAlignment="CENTER" textFill="WHITE">
+        <Button fx:id="addCaseButton" contentDisplay="CENTER" layoutX="510.0" layoutY="360.0" mnemonicParsing="false" onAction="#addCase" prefHeight="30.0" prefWidth="70.0" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Add Case" textAlignment="CENTER" textFill="WHITE">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
