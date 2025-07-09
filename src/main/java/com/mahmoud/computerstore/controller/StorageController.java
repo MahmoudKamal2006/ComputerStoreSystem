@@ -6,9 +6,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class StorageController {
+
+    @FXML
+    private TableView storageTable;
+
+    @FXML
+    private TableColumn idColumn;
+
+    @FXML
+    private TableColumn brandColumn;
+
+    @FXML
+    private TableColumn modelColumn;
+
+    @FXML
+    private TableColumn typeColumn;
+
+    @FXML
+    private TableColumn capacityColumn;
+
+    @FXML
+    private TableColumn interfaceColumn;
+
+    @FXML
+    private TableColumn formFactorColumn;
+
+    @FXML
+    private TableColumn readSpeedColumn;
+
+    @FXML
+    private TextField idField;
+
+    @FXML
+    private TextField brandField;
+
+    @FXML
+    private TextField modelField;
+
+    @FXML
+    private TextField typeField;
 
     @FXML
     private void goBack(ActionEvent event) {
@@ -18,7 +60,6 @@ public class StorageController {
     @FXML
     private void addStorage(ActionEvent event) {
         System.out.println("💾 Add Storage button clicked - Coming Soon!");
-        // TODO: Implement add Storage functionality
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {

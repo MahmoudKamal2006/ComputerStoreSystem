@@ -6,9 +6,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class RAMController {
+
+    @FXML
+    private TableView ramTable;
+
+    @FXML
+    private TableColumn idColumn;
+
+    @FXML
+    private TableColumn brandColumn;
+
+    @FXML
+    private TableColumn modelColumn;
+
+    @FXML
+    private TableColumn typeColumn;
+
+    @FXML
+    private TableColumn capacityColumn;
+
+    @FXML
+    private TableColumn speedColumn;
+
+    @FXML
+    private TableColumn modulesColumn;
+
+    @FXML
+    private TableColumn voltageColumn;
+
+    @FXML
+    private TextField idField;
+
+    @FXML
+    private TextField brandField;
+
+    @FXML
+    private TextField modelField;
+
+    @FXML
+    private TextField typeField;
 
     @FXML
     private void goBack(ActionEvent event) {
@@ -18,7 +60,6 @@ public class RAMController {
     @FXML
     private void addRam(ActionEvent event) {
         System.out.println("🧠 Add RAM button clicked - Coming Soon!");
-        // TODO: Implement add RAM functionality
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {

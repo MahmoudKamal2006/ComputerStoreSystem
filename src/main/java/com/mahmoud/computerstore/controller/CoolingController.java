@@ -6,9 +6,57 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CoolingController {
+
+    @FXML
+    private TableView coolingTable;
+
+    @FXML
+    private TableColumn idColumn;
+
+    @FXML
+    private TableColumn brandColumn;
+
+    @FXML
+    private TableColumn modelColumn;
+
+    @FXML
+    private TableColumn typeColumn;
+
+    @FXML
+    private TableColumn socketColumn;
+
+    @FXML
+    private TableColumn fanSizeColumn;
+
+    @FXML
+    private TableColumn radiatorColumn;
+
+    @FXML
+    private TableColumn noiseColumn;
+
+    @FXML
+    private TableColumn rpmColumn;
+
+    @FXML
+    private TextField idField;
+
+    @FXML
+    private TextField brandField;
+
+    @FXML
+    private TextField modelField;
+
+    @FXML
+    private TextField typeField;
+
+    @FXML
+    private TextField socketField;
 
     @FXML
     private void goBack(ActionEvent event) {
@@ -18,7 +66,6 @@ public class CoolingController {
     @FXML
     private void addCooling(ActionEvent event) {
         System.out.println("❄️ Add Cooling button clicked - Coming Soon!");
-        // TODO: Implement add Cooling functionality
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {

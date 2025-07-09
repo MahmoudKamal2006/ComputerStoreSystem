@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 
 public class CPUController {
 
-    // TableView and columns - matching your cpu_view.fxml exactly
     @FXML
     private TableView cpuTable;
 
@@ -44,7 +43,6 @@ public class CPUController {
     @FXML
     private TableColumn powerColumn;
 
-    // TextFields - matching your FXML
     @FXML
     private TextField idField;
 

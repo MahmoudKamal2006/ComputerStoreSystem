@@ -6,9 +6,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class PSUController {
+
+    @FXML
+    private TableView psuTable;
+
+    @FXML
+    private TableColumn idColumn;
+
+    @FXML
+    private TableColumn brandColumn;
+
+    @FXML
+    private TableColumn modelColumn;
+
+    @FXML
+    private TableColumn wattageColumn;
+
+    @FXML
+    private TableColumn efficiencyColumn;
+
+    @FXML
+    private TableColumn modularColumn;
+
+    @FXML
+    private TableColumn formFactorColumn;
+
+    @FXML
+    private TableColumn connectorsColumn;
+
+    @FXML
+    private TextField idField;
+
+    @FXML
+    private TextField brandField;
+
+    @FXML
+    private TextField modelField;
+
+    @FXML
+    private TextField wattageField;
 
     @FXML
     private void goBack(ActionEvent event) {
@@ -18,7 +60,6 @@ public class PSUController {
     @FXML
     private void addPsu(ActionEvent event) {
         System.out.println("⚡ Add PSU button clicked - Coming Soon!");
-        // TODO: Implement add PSU functionality
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {

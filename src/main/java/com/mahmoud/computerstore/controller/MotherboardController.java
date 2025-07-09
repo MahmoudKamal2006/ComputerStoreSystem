@@ -6,9 +6,57 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class MotherboardController {
+
+    @FXML
+    private TableView motherboardTable;
+
+    @FXML
+    private TableColumn idColumn;
+
+    @FXML
+    private TableColumn brandColumn;
+
+    @FXML
+    private TableColumn modelColumn;
+
+    @FXML
+    private TableColumn socketColumn;
+
+    @FXML
+    private TableColumn chipsetColumn;
+
+    @FXML
+    private TableColumn formFactorColumn;
+
+    @FXML
+    private TableColumn memorySlotsColumn;
+
+    @FXML
+    private TableColumn memoryTypeColumn;
+
+    @FXML
+    private TableColumn networkColumn;
+
+    @FXML
+    private TextField idField;
+
+    @FXML
+    private TextField brandField;
+
+    @FXML
+    private TextField modelField;
+
+    @FXML
+    private TextField socketField;
+
+    @FXML
+    private TextField chipsetField;
 
     @FXML
     private void goBack(ActionEvent event) {
@@ -17,8 +65,7 @@ public class MotherboardController {
 
     @FXML
     private void addMotherboard(ActionEvent event) {
-        System.out.println("🔌 Add Motherboard button clicked - Coming Soon!");
-        // TODO: Implement add Motherboard functionality
+        System.out.println("🖥️ Add Motherboard button clicked - Coming Soon!");
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {
