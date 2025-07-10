@@ -260,38 +260,54 @@ public class PCBuilderController implements Initializable {
     private void updateBuildSummary() {
         Build currentBuild = buildController.getCurrentBuild();
 
-        // Update each component label
+        // Update each component label with proper colors
         cpuLabel.setText(currentBuild.getCpu() != null ?
                 "✅ CPU: " + currentBuild.getCpu().getBrand() + " " + currentBuild.getCpu().getModel() + " (" + currentBuild.getCpu().getSocket() + ")" :
                 (currentStep == STEP_CPU ? "🔲 CPU: [Select CPU]" : "⏳ CPU: [Pending...]"));
+        cpuLabel.setStyle(currentBuild.getCpu() != null ? "-fx-text-fill: #446777;" :
+                (currentStep == STEP_CPU ? "-fx-text-fill: #446777;" : "-fx-text-fill: #999999;"));
 
         motherboardLabel.setText(currentBuild.getMotherboard() != null ?
                 "✅ Motherboard: " + currentBuild.getMotherboard().getBrand() + " " + currentBuild.getMotherboard().getModel() :
                 (currentStep == STEP_MOTHERBOARD ? "🔲 Motherboard: [Select Motherboard]" : "⏳ Motherboard: [Pending...]"));
+        motherboardLabel.setStyle(currentBuild.getMotherboard() != null ? "-fx-text-fill: #446777;" :
+                (currentStep == STEP_MOTHERBOARD ? "-fx-text-fill: #446777;" : "-fx-text-fill: #999999;"));
 
         coolingLabel.setText(currentBuild.getCooling() != null ?
                 "✅ Cooling: " + currentBuild.getCooling().getBrand() + " " + currentBuild.getCooling().getModel() :
                 (currentStep == STEP_COOLING ? "🔲 Cooling: [Select Cooling]" : "⏳ Cooling: [Pending...]"));
+        coolingLabel.setStyle(currentBuild.getCooling() != null ? "-fx-text-fill: #446777;" :
+                (currentStep == STEP_COOLING ? "-fx-text-fill: #446777;" : "-fx-text-fill: #999999;"));
 
         ramLabel.setText(currentBuild.getRam() != null ?
                 "✅ RAM: " + currentBuild.getRam().getBrand() + " " + currentBuild.getRam().getModel() :
                 (currentStep == STEP_RAM ? "🔲 RAM: [Select RAM]" : "⏳ RAM: [Pending...]"));
+        ramLabel.setStyle(currentBuild.getRam() != null ? "-fx-text-fill: #446777;" :
+                (currentStep == STEP_RAM ? "-fx-text-fill: #446777;" : "-fx-text-fill: #999999;"));
 
         storageLabel.setText(currentBuild.getStorage() != null ?
                 "✅ Storage: " + currentBuild.getStorage().getBrand() + " " + currentBuild.getStorage().getModel() :
                 (currentStep == STEP_STORAGE ? "🔲 Storage: [Select Storage]" : "⏳ Storage: [Pending...]"));
+        storageLabel.setStyle(currentBuild.getStorage() != null ? "-fx-text-fill: #446777;" :
+                (currentStep == STEP_STORAGE ? "-fx-text-fill: #446777;" : "-fx-text-fill: #999999;"));
 
         gpuLabel.setText(currentBuild.getGpu() != null ?
                 "✅ GPU: " + currentBuild.getGpu().getBrand() + " " + currentBuild.getGpu().getModel() :
                 (currentStep == STEP_GPU ? "🔲 GPU: [Select GPU]" : "⏳ GPU: [Pending...]"));
+        gpuLabel.setStyle(currentBuild.getGpu() != null ? "-fx-text-fill: #446777;" :
+                (currentStep == STEP_GPU ? "-fx-text-fill: #446777;" : "-fx-text-fill: #999999;"));
 
         caseLabel.setText(currentBuild.getPcCase() != null ?
                 "✅ Case: " + currentBuild.getPcCase().getBrand() + " " + currentBuild.getPcCase().getModel() :
                 (currentStep == STEP_CASE ? "🔲 Case: [Select Case]" : "⏳ Case: [Pending...]"));
+        caseLabel.setStyle(currentBuild.getPcCase() != null ? "-fx-text-fill: #446777;" :
+                (currentStep == STEP_CASE ? "-fx-text-fill: #446777;" : "-fx-text-fill: #999999;"));
 
         psuLabel.setText(currentBuild.getPsu() != null ?
                 "✅ PSU: " + currentBuild.getPsu().getBrand() + " " + currentBuild.getPsu().getModel() :
                 (currentStep == STEP_PSU ? "🔲 PSU: [Select PSU]" : "⏳ PSU: [Pending...]"));
+        psuLabel.setStyle(currentBuild.getPsu() != null ? "-fx-text-fill: #446777;" :
+                (currentStep == STEP_PSU ? "-fx-text-fill: #446777;" : "-fx-text-fill: #999999;"));
     }
 
     // Navigation Methods
