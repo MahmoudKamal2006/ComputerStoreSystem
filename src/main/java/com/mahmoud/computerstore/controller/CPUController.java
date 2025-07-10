@@ -72,6 +72,15 @@ public class CPUController implements Initializable {
     @FXML
     private TextField chipsetField;
 
+    @FXML
+    private TextField pcieField;
+
+    @FXML
+    private TextField memoryField;
+
+    @FXML
+    private TextField powerField;
+
     private DataService dataService;
     private ObservableList<CPU> cpuList;
 
@@ -113,12 +122,87 @@ public class CPUController implements Initializable {
 
     @FXML
     private void addCpu(ActionEvent event) {
-        System.out.println("💻 Add CPU button clicked - Coming Soon!");
-        // TODO: You can implement adding new CPUs here
-        // For example:
-        // String brand = brandField.getText();
-        // String model = modelField.getText();
-        // Create new CPU object and add to list
+        try {
+            // Get values from text fields
+            String brand = brandField.getText().trim();
+            String model = modelField.getText().trim();
+            String socket = socketField.getText().trim();
+            String chipset = chipsetField.getText().trim();
+            String pcieVersion = pcieField.getText().trim();
+            String memorySupport = memoryField.getText().trim();
+
+            // Required fields
+            if (brand.isEmpty() || model.isEmpty() || socket.isEmpty()) {
+                System.err.println("Brand, Model, and Socket are required fields!");
+                return;
+            }
+
+            // Default Values
+            int tdp = 65; // Default TDP
+            int powerConsumption = 65; // Default power consumption
+
+            try {
+                if (!tdpField.getText().trim().isEmpty()) {
+                    tdp = Integer.parseInt(tdpField.getText().trim());
+                }
+                if (!powerField.getText().trim().isEmpty()) {
+                    powerConsumption = Integer.parseInt(powerField.getText().trim());
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("TDP and Power must be valid numbers!");
+                return;
+            }
+
+            // Generate new ID
+            int newId = cpuList.size() + 1;
+
+            // Create new CPU object with all fields
+            CPU newCpu = new CPU(
+                    newId,
+                    brand,
+                    model,
+                    socket,
+                    tdp,
+                    chipset.isEmpty() ? "Compatible" : chipset,
+                    pcieVersion.isEmpty() ? "PCIe 4.0" : pcieVersion,
+                    memorySupport.isEmpty() ? "DDR4/DDR5" : memorySupport,
+                    powerConsumption
+            );
+
+            // Add to list and table
+            cpuList.add(newCpu);
+            cpuTable.refresh();
+
+            // Save to CSV file
+            try {
+                dataService.saveCPUs(cpuList);
+                System.out.println("Successfully saved CPU to CSV file!");
+            } catch (Exception saveException) {
+                System.err.println("Error saving to CSV: " + saveException.getMessage());
+                saveException.printStackTrace();
+            }
+
+            // Clear the text fields
+            clearFields();
+
+            System.out.println("Successfully added new CPU: " + brand + " " + model);
+
+        } catch (Exception e) {
+            System.err.println("Error adding CPU: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        idField.clear();
+        brandField.clear();
+        modelField.clear();
+        socketField.clear();
+        tdpField.clear();
+        chipsetField.clear();
+        pcieField.clear();
+        memoryField.clear();
+        powerField.clear();
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {
