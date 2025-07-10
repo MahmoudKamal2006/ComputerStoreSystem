@@ -114,48 +114,48 @@
             </children>
         </VBox>
 
-        <!-- Navigation Buttons -->
-        <Button fx:id="backButton" contentDisplay="CENTER" layoutX="20.0" layoutY="320.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Back" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <effect>
-                <DropShadow />
-            </effect>
-        </Button>
-
-        <Button fx:id="homeButton" contentDisplay="CENTER" layoutX="275.0" layoutY="320.0" mnemonicParsing="false" onAction="#goHome" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Home" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <effect>
-                <DropShadow />
-            </effect>
-        </Button>
-
-        <Button fx:id="skipButton" contentDisplay="CENTER" layoutX="450.0" layoutY="320.0" mnemonicParsing="false" onAction="#skipComponent" style="-fx-background-radius: 20; -fx-background-color: #999999;" text="Skip" textAlignment="CENTER" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="100.0">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <effect>
-                <DropShadow />
-            </effect>
-        </Button>
-
-        <Button fx:id="nextButton" contentDisplay="CENTER" layoutX="520.0" layoutY="320.0" mnemonicParsing="false" onAction="#nextStep" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Next" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="20.0">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <effect>
-                <DropShadow />
-            </effect>
-        </Button>
-
-        <!-- Step Information -->
-        <Label fx:id="stepInfoLabel" layoutX="320.0" layoutY="325.0" text="Step 1: Choose your CPU to determine socket compatibility" textFill="#446777" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+        <!-- Step Information (moved above buttons) -->
+        <Label fx:id="stepInfoLabel" layoutX="150.0" layoutY="305.0" text="Step 1: Choose your CPU to determine socket compatibility" textFill="#446777" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
             <font>
                 <Font size="10.0" />
             </font>
         </Label>
+
+        <!-- Navigation Buttons -->
+        <Button fx:id="backButton" contentDisplay="CENTER" layoutX="20.0" layoutY="340.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Back" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow />
+            </effect>
+        </Button>
+
+        <Button fx:id="homeButton" contentDisplay="CENTER" layoutX="275.0" layoutY="340.0" mnemonicParsing="false" onAction="#goHome" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Home" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow />
+            </effect>
+        </Button>
+
+        <Button fx:id="skipButton" contentDisplay="CENTER" layoutX="450.0" layoutY="340.0" mnemonicParsing="false" onAction="#skipComponent" style="-fx-background-radius: 20; -fx-background-color: #999999;" text="Skip" textAlignment="CENTER" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="100.0">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow />
+            </effect>
+        </Button>
+
+        <Button fx:id="nextButton" contentDisplay="CENTER" layoutX="520.0" layoutY="340.0" mnemonicParsing="false" onAction="#nextStep" style="-fx-background-radius: 20; -fx-background-color: #446777;" text="Next" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="20.0">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <DropShadow />
+            </effect>
+        </Button>
     </children>
 </AnchorPane>
