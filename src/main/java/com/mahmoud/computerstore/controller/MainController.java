@@ -17,8 +17,7 @@ public class MainController {
 
     @FXML
     private void openPCBuilder(ActionEvent event) {
-        System.out.println("🔧 PC Builder - Coming Soon!");
-        // TODO: Implement PC Builder later
+        loadView("/com/mahmoud/computerstore/view/pc_builder_view.fxml", "Computer Store - PC Builder", event);
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {
