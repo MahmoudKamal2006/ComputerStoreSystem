@@ -112,7 +112,81 @@ public class PSUController implements Initializable {
 
     @FXML
     private void addPsu(ActionEvent event) {
-        System.out.println("Add PSU button clicked - Coming Soon!");
+        try {
+            // Get values from text fields
+            String brand = brandField.getText().trim();
+            String model = modelField.getText().trim();
+            String efficiencyRating = efficiencyField.getText().trim();
+            String modular = modularField.getText().trim();
+            String formFactor = formFactorField.getText().trim();
+            String connectors = connectorsField.getText().trim();
+
+            // Validate required fields
+            if (brand.isEmpty() || model.isEmpty()) {
+                System.err.println("Brand and Model are required fields!");
+                return;
+            }
+
+            // Default value for numeric field
+            int wattage = 650; // Default wattage
+
+            try {
+                if (!wattageField.getText().trim().isEmpty()) {
+                    wattage = Integer.parseInt(wattageField.getText().trim());
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Wattage must be a valid number!");
+                return;
+            }
+
+            // Generate new ID
+            int newId = psuList.size() + 1;
+
+            // Create new PSU object with all fields
+            PSU newPsu = new PSU(
+                    newId,
+                    brand,
+                    model,
+                    wattage,
+                    efficiencyRating.isEmpty() ? "80+ Gold" : efficiencyRating,
+                    modular.isEmpty() ? "Full" : modular,
+                    formFactor.isEmpty() ? "ATX" : formFactor,
+                    connectors.isEmpty() ? "24-pin, 8-pin, 6+2-pin" : connectors
+            );
+
+            // Add to list and table
+            psuList.add(newPsu);
+            psuTable.refresh();
+
+            // Save to CSV file
+            try {
+                dataService.savePSUs(psuList);
+                System.out.println("Successfully saved PSU to CSV file!");
+            } catch (Exception saveException) {
+                System.err.println("Error saving to CSV: " + saveException.getMessage());
+                saveException.printStackTrace();
+            }
+
+            // Clear the text fields
+            clearFields();
+
+            System.out.println("Successfully added new PSU: " + brand + " " + model + " (" + wattage + "W)");
+
+        } catch (Exception e) {
+            System.err.println("Error adding PSU: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        idField.clear();
+        brandField.clear();
+        modelField.clear();
+        wattageField.clear();
+        efficiencyField.clear();
+        modularField.clear();
+        formFactorField.clear();
+        connectorsField.clear();
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {

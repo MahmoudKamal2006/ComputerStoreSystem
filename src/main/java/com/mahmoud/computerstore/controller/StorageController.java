@@ -112,7 +112,87 @@ public class StorageController implements Initializable {
 
     @FXML
     private void addStorage(ActionEvent event) {
-        System.out.println("Add Storage button clicked - Coming Soon!");
+        try {
+            // Get values from text fields
+            String brand = brandField.getText().trim();
+            String model = modelField.getText().trim();
+            String type = typeField.getText().trim();
+            String capacity = capacityField.getText().trim();
+            String interfaceType = interfaceField.getText().trim();
+            String formFactor = formFactorField.getText().trim();
+            String readSpeed = readSpeedField.getText().trim();
+
+            // Validate required fields
+            if (brand.isEmpty() || model.isEmpty()) {
+                System.err.println("Brand and Model are required fields!");
+                return;
+            }
+
+            // Generate new ID
+            int newId = storageList.size() + 1;
+
+            // Determine write speed based on type and read speed for more realistic defaults
+            String writeSpeed;
+            if (type.equalsIgnoreCase("NVMe") || type.equalsIgnoreCase("SSD")) {
+                // For SSDs/NVMe, write speed is typically 80-90% of read speed
+                try {
+                    int readSpeedValue = Integer.parseInt(readSpeed.replaceAll("[^0-9]", ""));
+                    int writeSpeedValue = (int)(readSpeedValue * 0.85); // 85% of read speed
+                    writeSpeed = writeSpeedValue + "MB/s";
+                } catch (NumberFormatException e) {
+                    writeSpeed = "3000MB/s"; // Default for NVMe/SSD
+                }
+            } else {
+                // For HDDs, write speed is usually similar or slightly lower than read speed
+                writeSpeed = readSpeed.isEmpty() ? "140MB/s" : readSpeed;
+            }
+
+            // Create new Storage object with all fields (including calculated writeSpeed)
+            Storage newStorage = new Storage(
+                    newId,
+                    brand,
+                    model,
+                    type.isEmpty() ? "NVMe" : type,
+                    capacity.isEmpty() ? "1TB" : capacity,
+                    interfaceType.isEmpty() ? "NVMe" : interfaceType,
+                    formFactor.isEmpty() ? "M.2" : formFactor,
+                    readSpeed.isEmpty() ? "3500MB/s" : readSpeed,
+                    writeSpeed // Calculated or default write speed
+            );
+
+            // Add to list and table
+            storageList.add(newStorage);
+            storageTable.refresh();
+
+            // Save to CSV file
+            try {
+                dataService.saveStorage(storageList);
+                System.out.println("Successfully saved Storage to CSV file!");
+            } catch (Exception saveException) {
+                System.err.println("Error saving to CSV: " + saveException.getMessage());
+                saveException.printStackTrace();
+            }
+
+            // Clear the text fields
+            clearFields();
+
+            System.out.println("Successfully added new Storage: " + brand + " " + model + " (" + type + ", " + capacity + ")");
+
+        } catch (Exception e) {
+            System.err.println("Error adding Storage: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        idField.clear();
+        brandField.clear();
+        modelField.clear();
+        typeField.clear();
+        capacityField.clear();
+        interfaceField.clear();
+        formFactorField.clear();
+        readSpeedField.clear();
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {

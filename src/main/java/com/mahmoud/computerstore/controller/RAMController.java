@@ -112,7 +112,81 @@ public class RAMController implements Initializable {
 
     @FXML
     private void addRam(ActionEvent event) {
-        System.out.println("Add RAM button clicked - Coming Soon!");
+        try {
+            // Get values from text fields
+            String brand = brandField.getText().trim();
+            String model = modelField.getText().trim();
+            String type = typeField.getText().trim();
+            String capacity = capacityField.getText().trim();
+            String speed = speedField.getText().trim();
+            String voltage = voltageField.getText().trim();
+
+            // Validate required fields
+            if (brand.isEmpty() || model.isEmpty()) {
+                System.err.println("Brand and Model are required fields!");
+                return;
+            }
+
+            // Default value for numeric field
+            int modules = 2; // Default number of modules (dual channel)
+
+            try {
+                if (!modulesField.getText().trim().isEmpty()) {
+                    modules = Integer.parseInt(modulesField.getText().trim());
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Modules must be a valid number!");
+                return;
+            }
+
+            // Generate new ID
+            int newId = ramList.size() + 1;
+
+            // Create new RAM object with all fields
+            RAM newRam = new RAM(
+                    newId,
+                    brand,
+                    model,
+                    type.isEmpty() ? "DDR5" : type,
+                    capacity.isEmpty() ? "16GB" : capacity,
+                    speed.isEmpty() ? "3200MHz" : speed,
+                    modules,
+                    voltage.isEmpty() ? "1.35V" : voltage
+            );
+
+            // Add to list and table
+            ramList.add(newRam);
+            ramTable.refresh();
+
+            // Save to CSV file
+            try {
+                dataService.saveRAM(ramList);
+                System.out.println("Successfully saved RAM to CSV file!");
+            } catch (Exception saveException) {
+                System.err.println("Error saving to CSV: " + saveException.getMessage());
+                saveException.printStackTrace();
+            }
+
+            // Clear the text fields
+            clearFields();
+
+            System.out.println("Successfully added new RAM: " + brand + " " + model + " (" + type + ")");
+
+        } catch (Exception e) {
+            System.err.println("Error adding RAM: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        idField.clear();
+        brandField.clear();
+        modelField.clear();
+        typeField.clear();
+        capacityField.clear();
+        speedField.clear();
+        modulesField.clear();
+        voltageField.clear();
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {

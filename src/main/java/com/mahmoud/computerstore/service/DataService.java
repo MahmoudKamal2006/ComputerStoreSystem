@@ -21,6 +21,8 @@ public class DataService {
     private static final String CASE_PATH = "/data/case.csv";
     private static final String COOLING_PATH = "/data/cooling.csv";
 
+    // Load Methods, made with ChatGPT
+
     // ---------- CPU ----------
     public List<CPU> loadCPUs() {
         List<CPU> list = new ArrayList<>();
@@ -243,7 +245,11 @@ public class DataService {
         return list;
     }
 
-    // Save methods remain the same...
+
+
+    // Save methods, made manually with the help of Claude AI to clone
+
+    // ----------CPU---------
     public void saveCPUs(List<CPU> list) {
         List<String[]> rows = new ArrayList<>();
         for (CPU c : list) {
@@ -256,6 +262,7 @@ public class DataService {
         CSVLoader.writeCSV("src/main/resources/data/cpu.csv", rows);
     }
 
+    // ---------GPU---------
     public void saveGPUs(List<GPU> list) {
         List<String[]> rows = new ArrayList<>();
         for (GPU g : list) {
@@ -268,5 +275,127 @@ public class DataService {
         CSVLoader.writeCSV("src/main/resources/data/gpu.csv", rows);
     }
 
-    // Add other save methods as needed...
+    // ---------Case---------
+    public void saveCases(List<Case> list) {
+        List<String[]> rows = new ArrayList<>();
+        for (Case c : list) {
+            rows.add(new String[]{
+                    String.valueOf(c.getId()),
+                    c.getBrand(),
+                    c.getModel(),
+                    c.getFormFactorSupport(),
+                    String.valueOf(c.getMaxGpuLength()),
+                    c.getDriveBays(),
+                    c.getFanSupport(),
+                    c.getRadiatorSupport()
+            });
+        }
+        CSVLoader.writeCSV("src/main/resources/data/case.csv", rows);
+    }
+
+    // ---------Cooling---------
+    public void saveCooling(List<Cooling> list) {
+        List<String[]> rows = new ArrayList<>();
+        for (Cooling c : list) {
+            rows.add(new String[]{
+                    String.valueOf(c.getId()),
+                    c.getBrand(),
+                    c.getModel(),
+                    c.getType(),
+                    c.getSocketCompatibility(),
+                    String.valueOf(c.getFanSize()),
+                    c.getRadiatorSize(),
+                    c.getNoiseLevel(),
+                    String.valueOf(c.getRpm())
+            });
+        }
+        CSVLoader.writeCSV("src/main/resources/data/cooling.csv", rows);
+    }
+
+    //---------Motherboard---------
+    public void saveMotherboards(List<Motherboard> list) {
+        List<String[]> rows = new ArrayList<>();
+        for (Motherboard mb : list) {
+            rows.add(new String[]{
+                    String.valueOf(mb.getId()),
+                    mb.getBrand(),
+                    mb.getModel(),
+                    mb.getSocket(),
+                    mb.getChipset(),
+                    mb.getFormFactor(),
+                    String.valueOf(mb.getMemorySlots()),
+                    mb.getMaxMemory(),
+                    mb.getMemoryType(),
+                    mb.getPcieSlots(),
+                    mb.getStorageInterfaces(),
+                    mb.getUsbPorts(),
+                    mb.getNetwork()
+            });
+        }
+        CSVLoader.writeCSV("src/main/resources/data/motherboard.csv", rows);
+    }
+
+    // ---------PSU---------
+    public void savePSUs(List<PSU> list) {
+        List<String[]> rows = new ArrayList<>();
+        for (PSU psu : list) {
+            // Split connectors back into individual components for CSV storage
+            String[] connectorParts = psu.getConnectors().split(",");
+
+            // Create base row with main PSU data
+            List<String> rowData = new ArrayList<>();
+            rowData.add(String.valueOf(psu.getId()));
+            rowData.add(psu.getBrand());
+            rowData.add(psu.getModel());
+            rowData.add(String.valueOf(psu.getWattage()));
+            rowData.add(psu.getEfficiencyRating());
+            rowData.add(psu.getModular());
+            rowData.add(psu.getFormFactor());
+
+            // Add connector parts as separate columns
+            for (String connector : connectorParts) {
+                rowData.add(connector.trim());
+            }
+
+            rows.add(rowData.toArray(new String[0]));
+        }
+        CSVLoader.writeCSV("src/main/resources/data/psu.csv", rows);
+    }
+
+    // ---------RAM---------
+    public void saveRAM(List<RAM> list) {
+        List<String[]> rows = new ArrayList<>();
+        for (RAM ram : list) {
+            rows.add(new String[]{
+                    String.valueOf(ram.getId()),
+                    ram.getBrand(),
+                    ram.getModel(),
+                    ram.getType(),
+                    ram.getCapacity(),
+                    ram.getSpeed(),
+                    String.valueOf(ram.getModules()),
+                    ram.getVoltage()
+            });
+        }
+        CSVLoader.writeCSV("src/main/resources/data/ram.csv", rows);
+    }
+
+    // ---------Storage---------
+    public void saveStorage(List<Storage> list) {
+        List<String[]> rows = new ArrayList<>();
+        for (Storage storage : list) {
+            rows.add(new String[]{
+                    String.valueOf(storage.getId()),
+                    storage.getBrand(),
+                    storage.getModel(),
+                    storage.getType(),
+                    storage.getCapacity(),
+                    storage.getInterfaceType(),
+                    storage.getFormFactor(),
+                    storage.getReadSpeed(),
+                    storage.getWriteSpeed()
+            });
+        }
+        CSVLoader.writeCSV("src/main/resources/data/storage.csv", rows);
+    }
 }

@@ -119,7 +119,88 @@ public class MotherboardController implements Initializable {
 
     @FXML
     private void addMotherboard(ActionEvent event) {
-        System.out.println("Add Motherboard button clicked - Coming Soon!");
+        try {
+            // Get values from text fields
+            String brand = brandField.getText().trim();
+            String model = modelField.getText().trim();
+            String socket = socketField.getText().trim();
+            String chipset = chipsetField.getText().trim();
+            String formFactor = formFactorField.getText().trim();
+            String memoryType = memoryTypeField.getText().trim();
+            String network = networkField.getText().trim();
+
+            // Validate required fields
+            if (brand.isEmpty() || model.isEmpty() || socket.isEmpty()) {
+                System.err.println("Brand, Model, and Socket are required fields!");
+                return;
+            }
+
+            // Default value for numeric field
+            int memorySlots = 4; // Default memory slots
+
+            try {
+                if (!memorySlotsField.getText().trim().isEmpty()) {
+                    memorySlots = Integer.parseInt(memorySlotsField.getText().trim());
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Memory Slots must be a valid number!");
+                return;
+            }
+
+            // Generate new ID
+            int newId = motherboardList.size() + 1;
+
+            // Create new Motherboard object with all fields (including defaults for missing UI fields)
+            Motherboard newMotherboard = new Motherboard(
+                    newId,
+                    brand,
+                    model,
+                    socket,
+                    chipset.isEmpty() ? "B760" : chipset,
+                    formFactor.isEmpty() ? "ATX" : formFactor,
+                    memorySlots,
+                    "128GB", // Default maxMemory (not in UI)
+                    memoryType.isEmpty() ? "DDR5" : memoryType,
+                    "1x PCIe 5.0 x16, 2x PCIe 4.0 x1", // Default pcieSlots (not in UI)
+                    "6x SATA III, 2x M.2", // Default storageInterfaces (not in UI)
+                    "4x USB 3.2, 2x USB 2.0", // Default usbPorts (not in UI)
+                    network.isEmpty() ? "Ethernet" : network
+            );
+
+            // Add to list and table
+            motherboardList.add(newMotherboard);
+            motherboardTable.refresh();
+
+            // Save to CSV file
+            try {
+                dataService.saveMotherboards(motherboardList);
+                System.out.println("Successfully saved Motherboard to CSV file!");
+            } catch (Exception saveException) {
+                System.err.println("Error saving to CSV: " + saveException.getMessage());
+                saveException.printStackTrace();
+            }
+
+            // Clear the text fields
+            clearFields();
+
+            System.out.println("Successfully added new Motherboard: " + brand + " " + model + " (" + socket + ")");
+
+        } catch (Exception e) {
+            System.err.println("Error adding Motherboard: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        idField.clear();
+        brandField.clear();
+        modelField.clear();
+        socketField.clear();
+        chipsetField.clear();
+        formFactorField.clear();
+        memorySlotsField.clear();
+        memoryTypeField.clear();
+        networkField.clear();
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {

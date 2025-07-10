@@ -112,7 +112,81 @@ public class CaseController implements Initializable {
 
     @FXML
     private void addCase(ActionEvent event) {
-        System.out.println("Add Case button clicked - Coming Soon!");
+        try {
+            // Get values from text fields
+            String brand = brandField.getText().trim();
+            String model = modelField.getText().trim();
+            String formFactorSupport = formFactorField.getText().trim();
+            String driveBays = driveBaysField.getText().trim();
+            String fanSupport = fanSupportField.getText().trim();
+            String radiatorSupport = radiatorSupportField.getText().trim();
+
+            // Validate required fields
+            if (brand.isEmpty() || model.isEmpty()) {
+                System.err.println("Brand and Model are required fields!");
+                return;
+            }
+
+            // Default Values
+            int maxGpuLength = 300; // Default max GPU length in mm
+
+            try {
+                if (!maxGpuLengthField.getText().trim().isEmpty()) {
+                    maxGpuLength = Integer.parseInt(maxGpuLengthField.getText().trim());
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("Max GPU Length must be a valid number!");
+                return;
+            }
+
+            // Generate new ID
+            int newId = caseList.size() + 1;
+
+            // Create new Case object with all fields
+            Case newCase = new Case(
+                    newId,
+                    brand,
+                    model,
+                    formFactorSupport.isEmpty() ? "ATX, Micro-ATX, Mini-ITX" : formFactorSupport,
+                    maxGpuLength,
+                    driveBays.isEmpty() ? "2x 3.5\", 2x 2.5\"" : driveBays,
+                    fanSupport.isEmpty() ? "3x 120mm front, 1x 120mm rear" : fanSupport,
+                    radiatorSupport.isEmpty() ? "240mm top, 120mm rear" : radiatorSupport
+            );
+
+            // Add to list and table
+            caseList.add(newCase);
+            caseTable.refresh();
+
+            // Save to CSV file
+            try {
+                dataService.saveCases(caseList);
+                System.out.println("Successfully saved Case to CSV file!");
+            } catch (Exception saveException) {
+                System.err.println("Error saving to CSV: " + saveException.getMessage());
+                saveException.printStackTrace();
+            }
+
+            // Clear the text fields
+            clearFields();
+
+            System.out.println("Successfully added new Case: " + brand + " " + model);
+
+        } catch (Exception e) {
+            System.err.println("Error adding Case: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        idField.clear();
+        brandField.clear();
+        modelField.clear();
+        formFactorField.clear();
+        maxGpuLengthField.clear();
+        driveBaysField.clear();
+        fanSupportField.clear();
+        radiatorSupportField.clear();
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {
