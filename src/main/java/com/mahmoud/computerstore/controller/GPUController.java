@@ -36,22 +36,19 @@ public class GPUController implements Initializable {
     private TableColumn<GPU, String> modelColumn;
 
     @FXML
-    private TableColumn<GPU, String> typeColumn;
+    private TableColumn<GPU, String> interfaceColumn;
 
     @FXML
-    private TableColumn<GPU, Integer> socketColumn;
+    private TableColumn<GPU, Integer> tdpColumn;
 
     @FXML
-    private TableColumn<GPU, String> fanSizeColumn;
+    private TableColumn<GPU, String> vramColumn;
 
     @FXML
-    private TableColumn<GPU, String> radiatorColumn;
+    private TableColumn<GPU, String> powerConnectorsColumn;
 
     @FXML
-    private TableColumn<GPU, Integer> noiseColumn;
-
-    @FXML
-    private TableColumn<GPU, Integer> rpmColumn;
+    private TableColumn<GPU, Integer> lengthColumn;
 
     // TextFields
     @FXML
@@ -64,10 +61,19 @@ public class GPUController implements Initializable {
     private TextField modelField;
 
     @FXML
-    private TextField typeField;
+    private TextField interfaceField;
 
     @FXML
-    private TextField socketField;
+    private TextField tdpField;
+
+    @FXML
+    private TextField vramField;
+
+    @FXML
+    private TextField powerConnectorsField;
+
+    @FXML
+    private TextField lengthField;
 
     private DataService dataService;
     private ObservableList<GPU> gpuList;
@@ -76,15 +82,15 @@ public class GPUController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dataService = new DataService();
 
+        // CORRECTED PropertyValueFactory mappings
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
         modelColumn.setCellValueFactory(new PropertyValueFactory<>("model"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("interfaceType"));
-        socketColumn.setCellValueFactory(new PropertyValueFactory<>("tdp"));
-        fanSizeColumn.setCellValueFactory(new PropertyValueFactory<>("vram"));
-        radiatorColumn.setCellValueFactory(new PropertyValueFactory<>("powerConnectors"));
-        noiseColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
-        rpmColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
+        interfaceColumn.setCellValueFactory(new PropertyValueFactory<>("interfaceType"));
+        tdpColumn.setCellValueFactory(new PropertyValueFactory<>("tdp"));
+        vramColumn.setCellValueFactory(new PropertyValueFactory<>("vram"));
+        powerConnectorsColumn.setCellValueFactory(new PropertyValueFactory<>("powerConnectors"));
+        lengthColumn.setCellValueFactory(new PropertyValueFactory<>("length"));
 
         loadGPUData();
     }
@@ -101,13 +107,90 @@ public class GPUController implements Initializable {
     }
 
     @FXML
-    private void goBack(ActionEvent event) {
-        loadView("/com/mahmoud/computerstore/view/inventory_view.fxml", "Computer Store - Inventory", event);
+    private void addGpu(ActionEvent event) {
+        try {
+            // Get values from text fields
+            String brand = brandField.getText().trim();
+            String model = modelField.getText().trim();
+            String interfaceType = interfaceField.getText().trim();
+            String vram = vramField.getText().trim();
+            String powerConnectors = powerConnectorsField.getText().trim();
+
+            // Validate required fields
+            if (brand.isEmpty() || model.isEmpty()) {
+                System.err.println("Brand and Model are required fields!");
+                return;
+            }
+
+            // Default Values
+            int tdp = 150; // Default TDP for GPU
+            int length = 280; // Default length in mm
+
+            try {
+                if (!tdpField.getText().trim().isEmpty()) {
+                    tdp = Integer.parseInt(tdpField.getText().trim());
+                }
+                if (!lengthField.getText().trim().isEmpty()) {
+                    length = Integer.parseInt(lengthField.getText().trim());
+                }
+            } catch (NumberFormatException e) {
+                System.err.println("TDP and Length must be valid numbers!");
+                return;
+            }
+
+            // Generate new ID
+            int newId = gpuList.size() + 1;
+
+            // Create new GPU object with all fields
+            GPU newGpu = new GPU(
+                    newId,
+                    brand,
+                    model,
+                    interfaceType.isEmpty() ? "PCIe 4.0 x16" : interfaceType,
+                    tdp,
+                    vram.isEmpty() ? "8GB" : vram,
+                    powerConnectors.isEmpty() ? "1x 8-pin" : powerConnectors,
+                    length
+            );
+
+            // Add to list and table
+            gpuList.add(newGpu);
+            gpuTable.refresh();
+
+            // Save to CSV file
+            try {
+                dataService.saveGPUs(gpuList);
+                System.out.println("Successfully saved GPU to CSV file!");
+            } catch (Exception saveException) {
+                System.err.println("Error saving to CSV: " + saveException.getMessage());
+                saveException.printStackTrace();
+            }
+
+            // Clear the text fields
+            clearFields();
+
+            System.out.println("Successfully added new GPU: " + brand + " " + model);
+
+        } catch (Exception e) {
+            System.err.println("Error adding GPU: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        idField.clear();
+        brandField.clear();
+        modelField.clear();
+        interfaceField.clear();
+        tdpField.clear();
+        vramField.clear();
+        powerConnectorsField.clear();
+        lengthField.clear();
     }
 
     @FXML
-    private void addGpu(ActionEvent event) {
-        System.out.println("Add GPU button clicked - Coming Soon!");
+    private void goBack(ActionEvent event) {
+        loadView("/com/mahmoud/computerstore/view/inventory_view.fxml", "Computer Store - Inventory", event);
     }
 
     private void loadView(String fxmlPath, String title, ActionEvent event) {
