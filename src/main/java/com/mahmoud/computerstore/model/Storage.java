@@ -47,6 +47,8 @@ public class Storage {
     public String getReadSpeed()     { return readSpeed; }
     public String getWriteSpeed()    { return writeSpeed; }
 
+    //  The code below is no longer needed, this was used for debugging and initial testing
+
     @Override
     public String toString() {
         return "Storage ID: " + id +

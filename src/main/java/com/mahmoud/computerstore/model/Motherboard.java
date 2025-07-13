@@ -63,6 +63,8 @@ public class Motherboard {
     public String getUsbPorts()          { return usbPorts; }
     public String getNetwork()           { return network; }
 
+    //  The code below is no longer needed, this was used for debugging and initial testing
+
     @Override
     public String toString() {
         return "Motherboard ID: " + id +

@@ -43,6 +43,8 @@ public class RAM {
     public int getModules()       { return modules; }
     public String getVoltage()    { return voltage; }
 
+    //  The code below is no longer needed, this was used for debugging and initial testing
+
     @Override
     public String toString() {
         return "RAM ID: " + id +

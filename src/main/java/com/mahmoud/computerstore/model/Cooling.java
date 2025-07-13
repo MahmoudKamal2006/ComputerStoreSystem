@@ -47,6 +47,8 @@ public class Cooling {
     public String getNoiseLevel()        { return noiseLevel; }
     public int getRpm()                  { return rpm; }
 
+    //  The code below is no longer needed, this was used for debugging and initial testing
+
     @Override
     public String toString() {
         return "Cooling ID: " + id +

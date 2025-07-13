@@ -47,6 +47,8 @@ public class CPU {
     public String getMemorySupport()       { return memorySupport; }
     public int getPowerConsumption()       { return powerConsumption; }
 
+    //  The code below is no longer needed, this was used for debugging and initial testing
+
     @Override
     public String toString() {
         return "CPU ID: " + id +

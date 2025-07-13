@@ -43,6 +43,8 @@ public class GPU {
     public String getPowerConnectors()   { return powerConnectors; }
     public int getLength()               { return length; }
 
+    //  The code below is no longer needed, this was used for debugging and initial testing
+
     @Override
     public String toString() {
         return "GPU ID: " + id +

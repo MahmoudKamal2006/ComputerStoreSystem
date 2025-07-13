@@ -21,33 +21,36 @@ public class DataService {
     private static final String CASE_PATH = "/data/case.csv";
     private static final String COOLING_PATH = "/data/cooling.csv";
 
-    // Load Methods, made with ChatGPT
+    // Load Methods
 
     // ---------- CPU ----------
     public List<CPU> loadCPUs() {
-        List<CPU> list = new ArrayList<>();
-        List<String[]> rows = CSVLoader.readCSV(CPU_PATH);
+        List<CPU> list = new ArrayList<>();                        // Empty list to fill
+        List<String[]> rows = CSVLoader.readCSV(CPU_PATH);         // Get raw .CSV data
         System.out.println("Loading CPUs: found " + rows.size() + " rows");
 
-        for (String[] row : rows) {
+        for (String[] row : rows) {                                // Process each row
             try {
-                if (row.length >= 9) {
-                    list.add(new CPU(
-                            Integer.parseInt(row[0].trim()),
-                            row[1].trim(), row[2].trim(), row[3].trim(),
-                            Integer.parseInt(row[4].trim()),
-                            row[5].trim(), row[6].trim(), row[7].trim(),
-                            Integer.parseInt(row[8].trim())
+                if (row.length >= 9) {                             // Validate row has enough columns
+                    list.add(new CPU(                              // Create CPU object from row data
+                            Integer.parseInt(row[0].trim()),       // ID (Integer.parseInt converts string to int)
+                            row[1].trim(),                         // Brand
+                            row[2].trim(),                         // Model
+                            row[3].trim(),                         // Socket
+                            Integer.parseInt(row[4].trim()),       // TDP (string to int)
+                            row[5].trim(),                         // Chipset compatibility
+                            row[6].trim(),                         // PCIe version
+                            row[7].trim(),                         // Memory support
+                            Integer.parseInt(row[8].trim())        // Power consumption (string to int)
                     ));
                 } else {
                     System.err.println("CPU row has insufficient columns: " + String.join(",", row));
                 }
-            } catch (Exception e) {
-                System.err.println("Error parsing CPU row: " + String.join(",", row) + " - " + e.getMessage());
+            } catch (Exception e) {                                // Handle parsing errors
+                System.err.println("Error parsing CPU row: " + String.join(",", row));
             }
         }
-        System.out.println("Successfully loaded " + list.size() + " CPUs");
-        return list;
+        return list;                                                // Return filled list of CPU objects
     }
 
     // ---------- GPU ----------
@@ -247,19 +250,26 @@ public class DataService {
 
 
 
-    // Save methods, made manually with the help of Claude AI to clone
+    // Save methods
 
     // ----------CPU---------
     public void saveCPUs(List<CPU> list) {
-        List<String[]> rows = new ArrayList<>();
-        for (CPU c : list) {
-            rows.add(new String[]{
-                    String.valueOf(c.getId()), c.getBrand(), c.getModel(), c.getSocket(),
-                    String.valueOf(c.getTdp()), c.getChipsetCompatibility(), c.getPcieVersion(),
-                    c.getMemorySupport(), String.valueOf(c.getPowerConsumption())
+        List<String[]> rows = new ArrayList<>();                   // Empty list for CSV rows
+
+        for (CPU c : list) {                                      // Loop through each CPU object
+            rows.add(new String[]{                                // Convert CPU to String array
+                    String.valueOf(c.getId()),                    // int to string
+                    c.getBrand(),                                 //no change
+                    c.getModel(),
+                    c.getSocket(),
+                    String.valueOf(c.getTdp()),                   // int to string
+                    c.getChipsetCompatibility(),
+                    c.getPcieVersion(),
+                    c.getMemorySupport(),
+                    String.valueOf(c.getPowerConsumption())       // int to string
             });
         }
-        CSVLoader.writeCSV("src/main/resources/data/cpu.csv", rows);
+        CSVLoader.writeCSV("src/main/resources/data/cpu.csv", rows);  // Write to file
     }
 
     // ---------GPU---------

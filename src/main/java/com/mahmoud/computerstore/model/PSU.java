@@ -43,6 +43,8 @@ public class PSU {
     public String getFormFactor()       { return formFactor; }
     public String getConnectors()       { return connectors; }
 
+    //  The code below is no longer needed, this was used for debugging and initial testing
+
     @Override
     public String toString() {
         return "PSU ID: " + id +

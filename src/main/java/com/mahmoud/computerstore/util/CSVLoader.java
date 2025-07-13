@@ -10,12 +10,7 @@ import java.util.List;
  */
 public class CSVLoader {
 
-    /**
-     * Reads a CSV file from the resources folder and returns the rows as List<String[]>
-     *
-     * @param filePath path from the resources root (e.g., "/data/cpu.csv")
-     * @return list of rows, each row is a String array of fields
-     */
+    //Reads a CSV file from the resources folder and returns the rows as List<String[]>
     public static List<String[]> readCSV(String filePath) {
         List<String[]> rows = new ArrayList<>();
 
@@ -36,12 +31,7 @@ public class CSVLoader {
         return rows;
     }
 
-    /**
-     * Writes a list of String[] rows to a CSV file.
-     *
-     * @param filePath file path on disk (e.g., "src/main/resources/data/cpu.csv")
-     * @param data     list of string arrays (rows)
-     */
+    //Writes a list of String[] rows to a CSV file
     public static void writeCSV(String filePath, List<String[]> data) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, StandardCharsets.UTF_8))) {
             for (String[] row : data) {

@@ -43,6 +43,8 @@ public class Case {
     public String getFanSupport()        { return fanSupport; }
     public String getRadiatorSupport()   { return radiatorSupport; }
 
+    //  The code below is no longer needed, this was used for debugging and initial testing
+
     @Override
     public String toString() {
         return "Case ID: " + id +
