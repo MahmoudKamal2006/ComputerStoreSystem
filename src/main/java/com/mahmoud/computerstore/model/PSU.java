@@ -14,9 +14,7 @@ public class PSU {
     private String formFactor;       // Form factor (e.g., ATX)
     private String connectors;       // Available power connectors (e.g., "24-pin, 8-pin CPU, 2x 6+2-pin PCIe")
 
-    /**
-     * Constructs a PSU object with specified attributes.
-     */
+    // Constructs a PSU object with specified attributes
     public PSU(int id,
                String brand,
                String model,

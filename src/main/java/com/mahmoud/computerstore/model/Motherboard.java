@@ -19,9 +19,7 @@ public class Motherboard {
     private String usbPorts;            // USB ports and types (e.g., "2x USB 3.2, 4x USB 2.0")
     private String network;             // Networking options (e.g., Ethernet, Wi-Fi 6)
 
-    /**
-     * Constructs a Motherboard object with specified attributes.
-     */
+    //Constructs a Motherboard object with specified attributes.
     public Motherboard(int id,
                        String brand,
                        String model,

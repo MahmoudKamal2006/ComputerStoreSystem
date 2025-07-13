@@ -6,7 +6,12 @@ import com.mahmoud.computerstore.model.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+/**
+ * IMPORTANT NOTE
+ * This class is no longer of use since it was used to test the project via the console (terminal)
+ */
+
+public class ConsoleTest {
     public static void main(String[] args) {
         BuildController builder = new BuildController();
         Scanner scanner = new Scanner(System.in);
@@ -19,7 +24,7 @@ public class Main {
         }
 
         if (cpus.isEmpty()) {
-            System.out.println("❗ No CPUs found in inventory.");
+            System.out.println("No CPUs found in inventory.");
             return;
         }
 
@@ -37,7 +42,7 @@ public class Main {
         System.out.println("\nCompatible Motherboards:");
         List<Motherboard> motherboards = builder.getCompatibleMotherboards();
         if (motherboards.isEmpty()) {
-            System.out.println("❗ No compatible motherboards found.");
+            System.out.println("No compatible motherboards found.");
             return;
         }
         for (int i = 0; i < motherboards.size(); i++) {
@@ -56,7 +61,7 @@ public class Main {
         System.out.println("\nCompatible Cooling:");
         List<Cooling> coolers = builder.getCompatibleCooling();
         if (coolers.isEmpty()) {
-            System.out.println("❗ No compatible cooling found.");
+            System.out.println("No compatible cooling found.");
         } else {
             for (int i = 0; i < coolers.size(); i++) {
                 System.out.println(i + ": " + coolers.get(i).getModel());
@@ -74,7 +79,7 @@ public class Main {
         System.out.println("\nCompatible RAM:");
         List<RAM> rams = builder.getCompatibleRAM();
         if (rams.isEmpty()) {
-            System.out.println("❗ No compatible RAM found.");
+            System.out.println("No compatible RAM found.");
             return;
         }
         for (int i = 0; i < rams.size(); i++) {
@@ -141,7 +146,7 @@ public class Main {
         System.out.println("\nCompatible PSUs:");
         List<PSU> psus = builder.getCompatiblePSUs();
         if (psus.isEmpty()) {
-            System.out.println("❗ No compatible PSUs found.");
+            System.out.println("No compatible PSUs found.");
         } else {
             for (int i = 0; i < psus.size(); i++) {
                 System.out.println(i + ": " + psus.get(i).getModel() + " (" + psus.get(i).getWattage() + "W)");
@@ -156,7 +161,7 @@ public class Main {
         }
 
         // Final build summary
-        System.out.println("\n✅ Final PC Build Summary:");
+        System.out.println("\nFinal PC Build Summary:");
         System.out.println(builder.getCurrentBuild());
     }
 }

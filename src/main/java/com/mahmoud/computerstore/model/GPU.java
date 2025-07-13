@@ -14,9 +14,7 @@ public class GPU {
     private String powerConnectors; // Required power connectors (e.g., 6-pin, 8-pin)
     private int length;             // Physical length in millimeters
 
-    /**
-     * Constructs a GPU object with specified attributes.
-     */
+    //Constructs a GPU object with specified attributes.
     public GPU(int id,
                String brand,
                String model,

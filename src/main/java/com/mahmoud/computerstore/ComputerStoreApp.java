@@ -28,10 +28,10 @@ public class ComputerStoreApp extends Application {
             primaryStage.setResizable(false); // Optional: prevent resizing to keep your 600x400 design
             primaryStage.show();
 
-            System.out.println("🚀 Computer Store Application Started Successfully!");
+            System.out.println("Computer Store Application Started Successfully!");
 
         } catch (Exception e) {
-            System.err.println("❌ Error starting application: " + e.getMessage());
+            System.err.println("Error starting application: " + e.getMessage());
             e.printStackTrace();
         }
     }

@@ -14,9 +14,7 @@ public class Case {
     private String fanSupport;          // Fan support info (e.g., "3x 120mm, 1x 140mm rear")
     private String radiatorSupport;     // Liquid cooling radiator support (e.g., "240mm top")
 
-    /**
-     * Constructs a Case object with specified attributes.
-     */
+    //Constructs a Case object with specified attributes
     public Case(int id,
                 String brand,
                 String model,

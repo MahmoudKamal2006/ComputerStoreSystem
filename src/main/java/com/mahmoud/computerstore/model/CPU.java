@@ -15,9 +15,7 @@ public class CPU {
     private String memorySupport;         // Supported memory types/speeds (e.g., DDR5-5600)
     private int powerConsumption;         // Typical power consumption in Watts
 
-    /**
-     * Constructs a CPU object with specified attributes.
-     */
+    //Constructs a CPU object with specified attributes.
     public CPU(int id,
                String brand,
                String model,
@@ -38,7 +36,7 @@ public class CPU {
         this.powerConsumption = powerConsumption;
     }
 
-    // --- Getters (no setters for immutability) ---
+    // --- Getters ---
     public int getId()                     { return id; }
     public String getBrand()               { return brand; }
     public String getModel()               { return model; }

@@ -15,9 +15,7 @@ public class Storage {
     private String readSpeed;      // Read speed (e.g., 3500MB/s)
     private String writeSpeed;     // Write speed (e.g., 3000MB/s)
 
-    /**
-     * Constructs a Storage object with specified attributes.
-     */
+    // Constructs a Storage object with specified attributes
     public Storage(int id,
                    String brand,
                    String model,

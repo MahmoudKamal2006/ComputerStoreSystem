@@ -14,9 +14,7 @@ public class RAM {
     private int modules;       // Number of modules in the kit
     private String voltage;    // Operating voltage (e.g., 1.35V)
 
-    /**
-     * Constructs a RAM object with specified attributes.
-     */
+    //Constructs a RAM object with specified attributes
     public RAM(int id,
                String brand,
                String model,

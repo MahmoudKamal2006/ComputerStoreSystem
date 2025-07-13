@@ -15,9 +15,7 @@ public class Cooling {
     private String noiseLevel;           // Noise level in decibels (e.g., 25 dB)
     private int rpm;                     // Fan speed in RPM
 
-    /**
-     * Constructs a Cooling object with specified attributes.
-     */
+    //Constructs a Cooling object with specified attributes.
     public Cooling(int id,
                    String brand,
                    String model,

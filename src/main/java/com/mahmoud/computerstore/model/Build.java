@@ -15,7 +15,7 @@ public class Build {
     private Case pcCase;
     private Cooling cooling;
 
-    // Default constructor - allows creating empty build
+    // Default constructor, allows creating empty build
     public Build() {
         this.cpu = null;
         this.gpu = null;
@@ -80,17 +80,19 @@ public class Build {
         return (completed / 8.0) * 100;
     }
 
-    @Override
-    public String toString() {
-        return "PC Build Summary:\n" +
-                "CPU: " + (cpu != null ? cpu.getBrand() + " " + cpu.getModel() : "❌ Not selected") + "\n" +
-                "Motherboard: " + (motherboard != null ? motherboard.getBrand() + " " + motherboard.getModel() : "❌ Not selected") + "\n" +
-                "Cooling: " + (cooling != null ? cooling.getBrand() + " " + cooling.getModel() : "❌ Not selected") + "\n" +
-                "RAM: " + (ram != null ? ram.getBrand() + " " + ram.getModel() : "❌ Not selected") + "\n" +
-                "Storage: " + (storage != null ? storage.getBrand() + " " + storage.getModel() : "❌ Not selected") + "\n" +
-                "GPU: " + (gpu != null ? gpu.getBrand() + " " + gpu.getModel() : "❌ Not selected") + "\n" +
-                "Case: " + (pcCase != null ? pcCase.getBrand() + " " + pcCase.getModel() : "❌ Not selected") + "\n" +
-                "PSU: " + (psu != null ? psu.getBrand() + " " + psu.getModel() : "❌ Not selected") + "\n" +
-                "Completion: " + String.format("%.0f%%", getCompletionPercentage());
-    }
+//  The code below is no longer needed, this was used for debugging and initial testing
+
+//    @Override
+//    public String toString() {
+//        return "PC Build Summary:\n" +
+//                "CPU: " + (cpu != null ? cpu.getBrand() + " " + cpu.getModel() : "Not selected") + "\n" +
+//                "Motherboard: " + (motherboard != null ? motherboard.getBrand() + " " + motherboard.getModel() : "Not selected") + "\n" +
+//                "Cooling: " + (cooling != null ? cooling.getBrand() + " " + cooling.getModel() : "Not selected") + "\n" +
+//                "RAM: " + (ram != null ? ram.getBrand() + " " + ram.getModel() : "Not selected") + "\n" +
+//                "Storage: " + (storage != null ? storage.getBrand() + " " + storage.getModel() : "Not selected") + "\n" +
+//                "GPU: " + (gpu != null ? gpu.getBrand() + " " + gpu.getModel() : "Not selected") + "\n" +
+//                "Case: " + (pcCase != null ? pcCase.getBrand() + " " + pcCase.getModel() : "Not selected") + "\n" +
+//                "PSU: " + (psu != null ? psu.getBrand() + " " + psu.getModel() : "Not selected") + "\n" +
+//                "Completion: " + String.format("%.0f%%", getCompletionPercentage());
+//    }
 }
