@@ -226,7 +226,7 @@ public class DataService {
         for (String[] row : rows) {
             try {
                 if (row.length >= 10) {
-                    // Combine socket compatibility columns (columns 4-6 in your current data)
+                    // Combine socket compatibility columns
                     String socketCompatibility = row[4].trim() + "," + row[5].trim() + "," + row[6].trim();
 
                     list.add(new Cooling(
