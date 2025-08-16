@@ -21,7 +21,7 @@ Computer Store System is a JavaFX desktop application that allows users to manag
 ## Supported Components
 | Component Type | Key Specifications | Sample Data |
 |----------------|-------------------|-------------|
-| **CPU** | Socket, TDP, Chipset, Memory Support | 21 processors (Intel & AMD) |
+| **CPU** | Socket, TDP, Chipset, Memory Support | Multiple processors (Intel & AMD) |
 | **GPU** | TDP, Memory, Performance tier | Various graphics cards |
 | **RAM** | Type (DDR4/DDR5), Capacity, Speed | Multiple memory configurations |
 | **Motherboard** | Socket, Chipset, Form Factor, Memory Slots | Compatible with CPU sockets |
